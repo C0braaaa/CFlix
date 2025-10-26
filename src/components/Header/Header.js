@@ -1,43 +1,31 @@
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import Button from '../Button/index-button.js';
 import styles from './Header.module.scss';
-import { faBell, faCaretDown, faCircleXmark, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBell,
+    faCaretDown,
+    faCircleXmark,
+    faMagnifyingGlass,
+    faRightFromBracket,
+    faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import config from '../../config/index-config.js';
+import { genres, nations, more, user } from './listDropdown.js';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-    const listMenu = [
-        {
-            title: 'Phim Lẻ',
-            to: 'singleMovie',
-        },
-        {
-            title: 'Phim Bộ',
-            to: 'series',
-        },
-        {
-            title: 'Thể Loại',
-            icon: faCaretDown,
-        },
-        {
-            title: 'Quốc Gia',
-            icon: faCaretDown,
-        },
-        {
-            title: 'Thêm',
-            icon: faCaretDown,
-        },
-    ];
-
     let currentUser = true;
 
     const [input, setInput] = useState('');
     const [scroll, setScroll] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -62,6 +50,97 @@ function Header() {
         inputRef.current.focus();
     };
 
+    const handleHideDropdown = () => {
+        setShowDropdown(null);
+    };
+
+    const renderTippyGenres = () => (
+        <Tippy
+            interactive
+            offset={[0, 15]}
+            onClickOutside={handleHideDropdown}
+            visible={showDropdown === 'genres'}
+            placement="bottom-start"
+            render={(attrs) => (
+                <div className={cx('dropdown')} tabIndex="-1" {...attrs}>
+                    <div className={cx('dropdown-list')}>
+                        {genres.map((genre, index) => (
+                            <Link to={genre.to} className={cx('dropdown-item')} key={index}>
+                                <span>{genre.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+        >
+            <div
+                className={cx('menu-item-toggle')}
+                onClick={() => setShowDropdown(showDropdown === 'genres' ? null : 'genres')}
+            >
+                Thể Loại
+                <FontAwesomeIcon icon={faCaretDown} />
+            </div>
+        </Tippy>
+    );
+
+    const renderTippyNations = () => (
+        <Tippy
+            interactive
+            offset={[0, 15]}
+            onClickOutside={handleHideDropdown}
+            visible={showDropdown === 'nations'}
+            placement="bottom-start"
+            render={(attrs) => (
+                <div className={cx('dropdown-2')} tabIndex="-1" {...attrs}>
+                    <div className={cx('dropdown-list-2')}>
+                        {nations.map((nation, index) => (
+                            <Link to={nation.to} className={cx('dropdown-item-2')} key={index}>
+                                <span>{nation.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+        >
+            <div
+                className={cx('menu-item-toggle')}
+                onClick={() => setShowDropdown(showDropdown === 'nations' ? null : 'nations')}
+            >
+                Quốc Gia
+                <FontAwesomeIcon icon={faCaretDown} />
+            </div>
+        </Tippy>
+    );
+
+    const renderTippyMore = () => (
+        <Tippy
+            interactive
+            offset={[0, 15]}
+            onClickOutside={handleHideDropdown}
+            visible={showDropdown === 'more'}
+            placement="bottom-start"
+            render={(attrs) => (
+                <div className={cx('dropdown-3')} tabIndex="-1" {...attrs}>
+                    <div className={cx('dropdown-list-3')}>
+                        {more.map((value, index) => (
+                            <Link to={value.to} className={cx('dropdown-item-3')} key={index}>
+                                <span>{value.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+        >
+            <div
+                className={cx('menu-item-toggle')}
+                onClick={() => setShowDropdown(showDropdown === 'more' ? null : 'more')}
+            >
+                Thêm
+                <FontAwesomeIcon icon={faCaretDown} />
+            </div>
+        </Tippy>
+    );
+
     return (
         <div className={cx('wrapper', { scroll: scroll })}>
             <Link to="/" className={cx('logo')}>
@@ -70,9 +149,6 @@ function Header() {
 
             <div className={cx('search')}>
                 <div className={cx('search-elements')}>
-                    <div className={cx('search-icon')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    </div>
                     <input
                         ref={inputRef}
                         value={input}
@@ -81,6 +157,9 @@ function Header() {
                         placeholder="Tìm kiếm phim, diễn viên"
                         onChange={(e) => setInput(e.target.value)}
                     />
+                    <div className={cx('search-icon')}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </div>
                     <div id="remove-text" className={cx('remove-icon')} onClick={handleDeleteText}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </div>
@@ -88,14 +167,39 @@ function Header() {
             </div>
             <div className={cx('el-group')}>
                 <div className={cx('main-menu')}>
-                    {listMenu.map((item, index) => (
-                        <div className={cx('menu-item')} key={index}>
-                            <Link to={config.routes[item.to]}>
-                                {item.title}
-                                {item.icon && <FontAwesomeIcon icon={item.icon} />}
-                            </Link>
-                        </div>
-                    ))}
+                    <div className={cx('menu-item')}>
+                        <Link to={config.routes.singleMovie}>Phim Lẻ</Link>
+                    </div>
+                    <div className={cx('menu-item')}>
+                        <Link to={config.routes.series}>Phim Bộ</Link>
+                    </div>
+                    <div className={cx('menu-item')}>
+                        {showDropdown && renderTippyGenres()}
+                        {!showDropdown && (
+                            <div className={cx('menu-item-toggle')} onClick={() => setShowDropdown('genres')}>
+                                Thể Loại
+                                <FontAwesomeIcon icon={faCaretDown} />
+                            </div>
+                        )}
+                    </div>
+                    <div className={cx('menu-item')}>
+                        {showDropdown && renderTippyNations()}
+                        {!showDropdown && (
+                            <div className={cx('menu-item-toggle')} onClick={() => setShowDropdown('nations')}>
+                                Quốc Gia
+                                <FontAwesomeIcon icon={faCaretDown} />
+                            </div>
+                        )}
+                    </div>
+                    <div className={cx('menu-item')}>
+                        {showDropdown && renderTippyMore()}
+                        {!showDropdown && (
+                            <div className={cx('menu-item-toggle')} onClick={() => setShowDropdown('more')}>
+                                Thêm
+                                <FontAwesomeIcon icon={faCaretDown} />
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className={cx('app-download')}>
                     <div className={cx('app-download-icon')}>
@@ -134,18 +238,64 @@ function Header() {
                                     <FontAwesomeIcon icon={faBell} />
                                 </div>
                             </div>
-                            <div className={cx('user')}>
-                                <div className={cx('avatar')}>
-                                    <img
-                                        className={cx('avatar-img')}
-                                        src="//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp"
-                                        alt="avatar"
-                                    />
+                            {showDropdown && (
+                                <Tippy
+                                    interactive
+                                    offset={[-15, 0]}
+                                    onClickOutside={handleHideDropdown}
+                                    visible={showDropdown === 'user'}
+                                    placement="bottom-end"
+                                    render={(attrs) => (
+                                        <div className={cx('user-dropdown')} tabIndex="-1" {...attrs}>
+                                            <span className={cx('username')}>Cobra</span>
+                                            <hr />
+                                            <div className={cx('user-menu-2')}>
+                                                {user.map((value, index) => (
+                                                    <Link to={value.to} className={cx('user-menu-item')} key={index}>
+                                                        <FontAwesomeIcon icon={value.icon} />
+                                                        <span>{value.name}</span>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                            <hr />
+                                            <div className={cx('user-logout')}>
+                                                <FontAwesomeIcon icon={faRightFromBracket} />
+                                                <span>Thoát</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                >
+                                    <div
+                                        className={cx('user')}
+                                        onClick={() => setShowDropdown(showDropdown === 'user' ? null : 'user')}
+                                    >
+                                        <div className={cx('avatar')}>
+                                            <img
+                                                className={cx('avatar-img')}
+                                                src="//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp"
+                                                alt="avatar"
+                                            />
+                                        </div>
+                                        <div className={cx('arrow-down')}>
+                                            <FontAwesomeIcon icon={faCaretDown} />
+                                        </div>
+                                    </div>
+                                </Tippy>
+                            )}
+                            {!showDropdown && (
+                                <div className={cx('user')} onClick={() => setShowDropdown('user')}>
+                                    <div className={cx('avatar')}>
+                                        <img
+                                            className={cx('avatar-img')}
+                                            src="//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp"
+                                            alt="avatar"
+                                        />
+                                    </div>
+                                    <div className={cx('arrow-down')}>
+                                        <FontAwesomeIcon icon={faCaretDown} />
+                                    </div>
                                 </div>
-                                <div className={cx('arrow-down')}>
-                                    <FontAwesomeIcon icon={faCaretDown} />
-                                </div>
-                            </div>
+                            )}
                         </div>
                     ) : (
                         <div className={cx('btn')}>

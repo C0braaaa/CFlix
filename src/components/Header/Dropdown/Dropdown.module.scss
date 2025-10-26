@@ -1,0 +1,79 @@
+// dropdown for menu item genres
+.dropdown-list-1 {
+    width: 52rem;
+    height: 65rem;
+    background-color: rgba(15, 17, 26, 0.7);
+    padding: 8px;
+    border-radius: 1rem;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    z-index: 100;
+
+    .dropdown-item-1 {
+        cursor: pointer;
+        padding: 2px 1.6rem;
+        color: var(--text-color);
+        overflow: hidden;
+        border-radius: 0.5rem;
+        &:hover {
+            background-color: #212529;
+        }
+        span {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+// dropdown for menu item nations
+.dropdown-list-2 {
+    width: 16.4rem;
+    height: 42rem;
+    padding: 8px 0;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: rgba(15, 17, 26, 0.7);
+
+    .dropdown-item-2 {
+        cursor: pointer;
+        padding: 5px 2rem;
+        color: var(--text-color);
+        overflow: hidden;
+        &:hover {
+            background-color: #212529;
+        }
+        span {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+// dropdown for menu item nations
+.dropdown-list-3 {
+    width: 16.4rem;
+    height: 12.5rem;
+    padding: 8px 0;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: rgba(15, 17, 26, 0.7);
+
+    .dropdown-item-3 {
+        cursor: pointer;
+        padding: 5px 2rem;
+        color: var(--text-color);
+        overflow: hidden;
+        &:hover {
+            background-color: #212529;
+        }
+        span {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
