@@ -73,7 +73,7 @@ export const nations = [
         to: '/quoc-gia/canada',
     },
     {
-        name: 'Han Quốc',
+        name: 'Hàn Quốc',
         to: '/quoc-gia/korea',
     },
     {
@@ -133,21 +133,21 @@ export const user = [
     {
         name: 'Yêu thích',
         icon: faHeart,
-        to: 'user/favorite',
+        to: '/user/favorite',
     },
     {
         name: 'Danh sách',
         icon: faPlus,
-        to: 'user/playlist',
+        to: '/user/playlist',
     },
     {
         name: 'Xem tiếp',
         icon: faHistory,
-        to: 'user/xem-tiep',
+        to: '/user/xem-tiep',
     },
     {
         name: 'Tài khoản',
         icon: faUser,
-        to: 'user/profile',
+        to: '/user/profile',
     },
 ];

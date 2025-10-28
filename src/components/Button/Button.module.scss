@@ -7,10 +7,10 @@
     font-weight: 600;
     padding: 12px 16px;
     border-radius: 3rem;
+    border: 1px solid transparent;
     font-family: var(--font-family);
     cursor: pointer;
     background-color: var(--white);
-    border: 1px solid transparent;
     user-select: none;
     opacity: 0.9;
     + .wrapper {
@@ -67,7 +67,7 @@
 
 .outline {
     color: var(--primary);
-    border-color: var(--primary);
+    border-color: var(--primary-text);
 
     &:hover {
         border-color: var(--primary);
@@ -86,8 +86,9 @@
 
 //Button size
 .small {
-    min-width: 88px;
-    padding: 4px 16px;
+    min-width: 4.5rem;
+    height: 2.4rem;
+    padding: 0px 6px;
 }
 
 .large {

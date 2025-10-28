@@ -3,10 +3,17 @@
 
 :root {
     --primary: #fff;
+    --primary-color: #ffd875;
     --primary-text: #ffd875;
+    --text-black: #000000;
 
     --text-color: #ffffff;
-
+    --text-color-1: #aaa;
+    --background-color: #191b24;
+    --background-color-1: #0f111a;
+    --background-color-2: #ffffff10;
+    --background-color-3: #25272f;
+    --border-color: #fff4;
     --font-family: 'Montserrat', sans-serif;
 }
 
@@ -24,7 +31,7 @@ body {
     font-size: 2rem;
     line-height: 1.5;
     text-rendering: optimizeLegibility;
-    background-color: #191b24;
+    background-color: var(--background-color);
 }
 a {
     text-decoration: none !important;

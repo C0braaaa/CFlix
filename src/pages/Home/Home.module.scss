@@ -1,0 +1,320 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.slide {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 80rem;
+    max-height: 80rem;
+    user-select: none;
+}
+
+.slide-elements {
+    cursor: grab;
+    cursor: -webkit-grab;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    &:active {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+    }
+}
+
+.cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url('../../../public/assets/images/dotted.png');
+
+    .cover-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        -webkit-mask-image: linear-gradient(0deg, transparent 0, black 20%, black 80%, transparent),
+            linear-gradient(90deg, transparent 0, black 20%, black 80%, transparent);
+        -webkit-mask-composite: intersect;
+        mask-composite: intersect;
+        mask-image: linear-gradient(0deg, transparent 0, black 20%, black 80%, transparent),
+            linear-gradient(90deg, transparent 0, black 35%, black 65%, transparent);
+    }
+}
+
+.slide-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 70rem;
+    padding: 10rem 5rem 15rem 5rem;
+    display: flex;
+    flex-direction: column;
+    // align-items: flex-end;
+    z-index: 2;
+
+    .movie-title {
+        color: var(--primary-text);
+        width: 100%;
+    }
+
+    .movie-eng-title {
+        font-size: 1.8rem;
+        width: 100%;
+        margin: 0.5rem 0;
+        color: var(--primary-text);
+    }
+
+    .movie-tags-1 {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .movie-tags-2 {
+        margin-bottom: 2.5rem;
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+.IMDb-tag {
+    border: 1px solid #f0d25c;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    padding: 0 0.5rem;
+    align-items: center;
+    display: inline-flex;
+
+    &::before {
+        content: 'IMDb';
+        color: #f0d25c;
+        font-weight: 500;
+        padding-right: 4px;
+        font-size: 10px;
+        line-height: 1;
+    }
+}
+
+.quality-tag {
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    font-size: 1.4rem;
+    color: var(--text-black);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(220deg, #ffd875, #fff);
+}
+
+.tag-model {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    padding: 0 0.8rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tag-classic,
+.tag-topic {
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    padding: 0 0.5rem;
+    display: inline-flex;
+    color: var(--text-color);
+}
+
+.tag-classic {
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+.tag-topic {
+    background-color: var(--background-color-2);
+}
+
+.movie-description {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+
+    .play {
+        width: 7rem;
+        height: 7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(39deg, rgba(254, 207, 89, 1), rgba(255, 241, 204, 1));
+
+        opacity: 0.9;
+
+        &:hover {
+            opacity: 1;
+            box-shadow: 0 5px 10px 5px rgba(255, 218, 125, 0.1);
+        }
+        .play-icon {
+            color: #191b24;
+            font-size: 3rem;
+            transform: translateX(4px);
+            transform: translateY(3px);
+        }
+    }
+}
+
+.group-actions {
+    display: inline-flex;
+    height: auto;
+    align-items: center;
+    border: 2px solid var(--border-color);
+    border-radius: 3rem;
+
+    &:hover {
+        border-color: var(--primary);
+    }
+
+    .action-item {
+        cursor: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5.4rem;
+        height: 4.7rem;
+        padding: 6px 3.5rem;
+        font-size: 2rem;
+        color: var(--text-color);
+
+        &:hover {
+            color: var(--primary-text);
+        }
+    }
+    .action-item + .action-item {
+        border-left: 2px solid var(--border-color);
+    }
+}
+
+// TIPPY LIBRARY
+// Swiper Library
+.slide :global(.swiper-slide) {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0 !important;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide :global(.swiper-slide-active) {
+    opacity: 1 !important;
+    z-index: 2;
+}
+.slide {
+    :global {
+        .swiper-pagination {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            transform: translateX(50%);
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 9999px;
+            transition: all 0.4s ease;
+            opacity: 1;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 36px;
+            background-color: #fff;
+            border-radius: 9999px;
+            transition: all 0.4s ease;
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+}
+// Animations
+.slideInLeft {
+    animation: slideInLeft 0.7s linear forwards;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-70px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slideInRight {
+    animation: slideInRight 0.7s linear forwards;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(70px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+// Media Queries
+
+@media (max-width: 1600px) {
+    .slide {
+        max-height: 70rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .slide {
+        max-height: 70rem;
+    }
+}
