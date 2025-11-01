@@ -9,13 +9,19 @@ import { faBell, faDoorOpen, faUser, faUserPlus } from '@fortawesome/free-solid-
 import { Link } from 'react-router-dom';
 import config from '../../config/index-config.js';
 import { genres, nations, more, user } from './listDropdown.js';
-import Dropdown from './Dropdown/Dropdown';
+import Dropdown from './Dropdown/Dropdown.jsx';
 import Search from './Search/Search.jsx';
+import { useAuth } from '../../features/auth/context/AuthContext.jsx';
+import AuthModal from '../../features/auth/components/AuthModal/AuthModal.jsx';
+import LoginForm from '../../features/auth/components/LoginForm/LoginForm.jsx';
+import RegisterForm from '../../features/auth/components/RegisterForm/RegisterForm.jsx';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-    let currentUser = true;
+    let currentUser = false;
+
+    const { isModalOpen, modalType, openModal, closeModal } = useAuth();
 
     const [scroll, setScroll] = useState(false);
     const [showDropdown, setShowDropdown] = useState(null);
@@ -37,99 +43,120 @@ function Header() {
     }, []);
 
     return (
-        <div className={cx('wrapper', { scroll: scroll })}>
-            <Link to="/" className={cx('logo')}>
-                <img src="/assets/images/logo.png" alt="logo" />
-            </Link>
+        <>
+            <div className={cx('wrapper', { scroll: scroll })}>
+                <Link to="/" className={cx('logo')}>
+                    <img src="/assets/images/logo.png" alt="logo" />
+                </Link>
 
-            {/* Search */}
-            <Search />
-            <div className={cx('el-group')}>
-                <div className={cx('main-menu')}>
-                    <div className={cx('menu-item')}>
-                        <Link to={config.routes.singleMovie}>Phim Lẻ</Link>
-                    </div>
-                    <div className={cx('menu-item')}>
-                        <Link to={config.routes.series}>Phim Bộ</Link>
-                    </div>
-                    <div className={cx('menu-item')}>
-                        <Dropdown
-                            id="1"
-                            label="Thể Loại"
-                            name="genres"
-                            data={genres}
-                            showDropdown={showDropdown}
-                            setShowDropdown={setShowDropdown}
-                        />
-                    </div>
-                    <div className={cx('menu-item')}>
-                        <Dropdown
-                            id="2"
-                            label="Quốc Gia"
-                            name="nations"
-                            data={nations}
-                            showDropdown={showDropdown}
-                            setShowDropdown={setShowDropdown}
-                        />
-                    </div>
-                    <div className={cx('menu-item')}>
-                        <Dropdown
-                            id="3"
-                            label="Thêm"
-                            name="more"
-                            data={more}
-                            showDropdown={showDropdown}
-                            setShowDropdown={setShowDropdown}
-                        />
-                    </div>
-                </div>
-                {currentUser ? (
-                    <div className={cx('app-download')}>
-                        <div className={cx('app-download-icon')}>
-                            <FontAwesomeIcon icon={faDoorOpen} />
+                {/* Search */}
+                <Search />
+                <div className={cx('el-group')}>
+                    <div className={cx('main-menu')}>
+                        <div className={cx('menu-item')}>
+                            <Link to={config.routes.singleMovie}>Phim Lẻ</Link>
                         </div>
-                        <div className={cx('app-download-text')}>
-                            <span>Chào mừng đến</span>
-                            <strong>CFlix</strong>
+                        <div className={cx('menu-item')}>
+                            <Link to={config.routes.series}>Phim Bộ</Link>
                         </div>
-                    </div>
-                ) : (
-                    <div className={cx('btn-2')}>
-                        <Button primary leftIcon={<FontAwesomeIcon icon={faUserPlus} />}>
-                            Đăng Kí
-                        </Button>
-                    </div>
-                )}
-                <div className={cx('main-user')}>
-                    {currentUser ? (
-                        <div className={cx('user-menu')}>
-                            <div className={cx('notification')}>
-                                <div className={cx('notification-icon')}>
-                                    <FontAwesomeIcon icon={faBell} />
-                                </div>
-                            </div>
+                        <div className={cx('menu-item')}>
                             <Dropdown
-                                name="user"
-                                type="user"
-                                data={user}
+                                label="Thể Loại"
+                                name="genres"
+                                data={genres}
                                 showDropdown={showDropdown}
                                 setShowDropdown={setShowDropdown}
-                                userInfo={{
-                                    name: 'Cobra',
-                                    avatar: '//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp',
-                                }}
+                                columns={4}
+                                width="52rem"
+                                height="65rem"
                             />
                         </div>
+                        <div className={cx('menu-item')}>
+                            <Dropdown
+                                label="Quốc Gia"
+                                name="nations"
+                                data={nations}
+                                showDropdown={showDropdown}
+                                setShowDropdown={setShowDropdown}
+                                columns={1}
+                                width="16.4rem"
+                                height="42rem"
+                            />
+                        </div>
+                        <div className={cx('menu-item')}>
+                            <Dropdown
+                                label="Thêm"
+                                name="more"
+                                data={more}
+                                showDropdown={showDropdown}
+                                setShowDropdown={setShowDropdown}
+                                columns={1}
+                                width="16.4rem"
+                                height="12.5rem"
+                            />
+                        </div>
+                    </div>
+                    {currentUser ? (
+                        <div className={cx('app-download')}>
+                            <div className={cx('app-download-icon')}>
+                                <FontAwesomeIcon icon={faDoorOpen} />
+                            </div>
+                            <div className={cx('app-download-text')}>
+                                <span>Chào mừng đến</span>
+                                <strong>CFlix</strong>
+                            </div>
+                        </div>
                     ) : (
-                        <div className={cx('btn')}>
-                            <Button primary leftIcon={<FontAwesomeIcon icon={faUser} />}>
-                                Thành viên
+                        <div className={cx('btn-2')}>
+                            <Button
+                                primary
+                                leftIcon={<FontAwesomeIcon icon={faUserPlus} />}
+                                onClick={() => openModal('register')}
+                            >
+                                Đăng Kí
                             </Button>
                         </div>
                     )}
+                    <div className={cx('main-user')}>
+                        {currentUser ? (
+                            <div className={cx('user-menu')}>
+                                <div className={cx('notification')}>
+                                    <div className={cx('notification-icon')}>
+                                        <FontAwesomeIcon icon={faBell} />
+                                    </div>
+                                </div>
+                                <Dropdown
+                                    name="user"
+                                    type="user"
+                                    data={user}
+                                    showDropdown={showDropdown}
+                                    setShowDropdown={setShowDropdown}
+                                    userInfo={{
+                                        name: 'Cobra',
+                                        avatar: '//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp',
+                                    }}
+                                />
+                            </div>
+                        ) : (
+                            <div className={cx('btn')}>
+                                <Button
+                                    primary
+                                    leftIcon={<FontAwesomeIcon icon={faUser} />}
+                                    onClick={() => openModal('login')}
+                                >
+                                    Thành viên
+                                </Button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+            {/* // Modal */}
+            <AuthModal isOpen={isModalOpen} onClose={closeModal}>
+                {modalType === 'login' && <LoginForm />}
+                {modalType === 'register' && <RegisterForm />}
+            </AuthModal>
+        </>
     );
 }
 

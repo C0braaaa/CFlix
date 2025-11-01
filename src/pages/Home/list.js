@@ -7,7 +7,7 @@ export const slidesInfo = [
         tagModel: 'T13',
 
         releaseInfo: ['2021', '2h 28m'],
-        topics: ['Chiếu Rạp', 'Gay Cấn', 'Siêu Anh Hùng', 'Marvel', 'Chuyển Thể', 'Phiêu Lưu'],
+        types: ['Chiếu Rạp', 'Gay Cấn', 'Siêu Anh Hùng', 'Marvel', 'Chuyển Thể', 'Phiêu Lưu'],
         description: `
             Danh tính Người Nhện bị Mysterio tiết lộ, khiến cuộc sống của Peter Parker gặp 
             nhiều khó khăn. Anh phải đối mặt với sự soi mói của dư luận, sự nghi ngờ của bạn
@@ -20,6 +20,7 @@ export const slidesInfo = [
              (Jamie Foxx), Sandman (Thomas Haden Church) và Lizard (Rhys Ifans).
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/f9f0dbe638fb6996e114f12f2ee63aa6.jpg',
+        to: '/xem-phim/spider-man-no-way-home',
     },
     {
         title: 'Trăm Dặm Tử Thần',
@@ -29,13 +30,14 @@ export const slidesInfo = [
         tagModel: 'T18',
 
         releaseInfo: ['2025', '1h 48m'],
-        topics: ['Chiếu Rạp', 'Gay Cấn', 'Kinh Dị', 'Khoa Học', 'Chuyển Thể', 'Phiêu Lưu'],
+        types: ['Chiếu Rạp', 'Gay Cấn', 'Kinh Dị', 'Khoa Học', 'Chuyển Thể', 'Phiêu Lưu'],
         description: `
             Dựa trên cuốn tiểu thuyết cùng tên của bậc thầy kể chuyện Stephen King, Trăm Dặm Tử Thần xoay quanh một nhóm thiếu 
             niên tham gia một cuộc thi thường niên mang tên chuyến Đi Xa. Tại đây, họ sẽ phải duy trì một tốc độ nhất định, nếu 
             không, họ sẽ bị loại khỏi cuộc chơi, vĩnh viễn.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c21745efee816a40729ad2f2fedb69f0.webp',
+        to: '/xem-phim/the-long-walk',
     },
     {
         title: 'Hành Trình Rực Rỡ Ta Đã Yêu',
@@ -44,7 +46,7 @@ export const slidesInfo = [
         quality: '4K',
         tagModel: 'T16',
         releaseInfo: ['2025', '1h 49m'],
-        topics: ['Chính Kịch', 'Chiếu Rạp', 'Tâm Lý', 'Thần Thoại', 'Lãng Mạn', 'Viễn Tưởng'],
+        types: ['Chính Kịch', 'Chiếu Rạp', 'Tâm Lý', 'Thần Thoại', 'Lãng Mạn', 'Viễn Tưởng'],
         description: `
             Điều gì sẽ xảy ra nếu bạn có thể mở một cánh cửa và bước qua đó để sống lại một khoảnh khắc 
             trong quá khứ? Sarah (Margot Robbie) và David (Colin Farrell) là hai người độc thân 
@@ -54,6 +56,7 @@ export const slidesInfo = [
             hội để thay đổi tương lai.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c6035e3d8cc0d2388997a8f45f23686b.webp',
+        to: '/xem-phim/a-big-bold-beautiful-journey',
     },
     {
         title: 'Trò Chơi Ảo Giác: Ares',
@@ -62,13 +65,14 @@ export const slidesInfo = [
         quality: null,
         tagModel: 'T13',
         releaseInfo: ['2025', '1h 59m', 'CAM'],
-        topics: ['Chiếu Rạp', 'Hành Động', 'Khoa Học', 'Giả Tưởng', 'Phiêu Lưu'],
+        types: ['Chiếu Rạp', 'Hành Động', 'Khoa Học', 'Giả Tưởng', 'Phiêu Lưu'],
         description: `
            Trò Chơi Ảo Giác (TRON: Ares) theo chân Ares – một thực thể ảo cực kỳ tinh vi được cử từ thế giới 
            số đến thế giới thực trong một nhiệm vụ nguy hiểm, đánh dấu cuộc chạm trán đầu tiên giữa loài người 
            và những thực thể trí tuệ nhân tạo.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/cedd848ff99c21d69a84f1c610872b4f.webp',
+        to: '/xem-phim/tron-ares',
     },
     {
         title: 'Hoa Hồng Có Gai',
@@ -77,7 +81,7 @@ export const slidesInfo = [
         quality: null,
         tagModel: 'T16',
         releaseInfo: ['2025', '1h 45m'],
-        topics: ['Chiếu Rạp', 'Chính Kịch', 'Tình Cảm', 'Gia Đình', 'Hài', 'Lãng Mạn'],
+        types: ['Chiếu Rạp', 'Chính Kịch', 'Tình Cảm', 'Gia Đình', 'Hài', 'Lãng Mạn'],
         description: `
             Cuộc sống của Ivy và Theo tưởng chừng hoàn hảo: sự nghiệp thành công, hôn nhân hạnh phúc, con cái ngoan ngoãn. 
             Nhưng đằng sau lớp vỏ của một gia đình lý tưởng ấy là cơn bão ngầm đang dần hình thành — khi sự nghiệp của Theo 
@@ -85,5 +89,6 @@ export const slidesInfo = [
             tất cả.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/d337eec84180302155cff0bdb951e62f.webp',
+        to: '/xem-phim/hoa-hong-co-gai',
     },
 ];

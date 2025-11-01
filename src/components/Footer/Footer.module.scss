@@ -52,6 +52,11 @@
         background-color: var(--background-color-2);
         border-radius: 50%;
         font-size: 1.6rem;
+        transition: transform 0.3s linear;
+
+        &:hover {
+            transform: translateY(-1rem);
+        }
     }
 }
 

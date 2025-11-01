@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -9,17 +12,57 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
-import { faCircleExclamation, faHeart, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { slidesInfo } from './list';
+import { Topics } from './component/index';
 
 const cx = classNames.bind(styles);
 
 function Home() {
+    useEffect(() => {
+        document.title = 'CFlix - Phim Hay Xem Là Ngất Ngay';
+    }, []);
+
+    // Ham ho trợ chạy animation không cần slide mount lại
+    const handleSlideAnimation = (swiper, index) => {
+        const slide = swiper.slides[index];
+        if (!slide) return;
+
+        const img = slide.querySelector(`.${cx('cover-image')}`);
+        const info = slide.querySelector(`.${cx('slide-info')}`);
+
+        img?.classList.add(cx('slideInRight'));
+        info?.classList.add(cx('slideInLeft'));
+    };
+
+    const resetSlideAnimation = (slide) => {
+        if (!slide) return;
+        slide.querySelector(`.${cx('cover-image')}`)?.classList.remove(cx('slideInRight'));
+        slide.querySelector(`.${cx('slide-info')}`)?.classList.remove(cx('slideInLeft'));
+    };
+
+    const playSlideAnimation = (slide) => {
+        if (!slide) return;
+        const img = slide.querySelector(`.${cx('cover-image')}`);
+        const info = slide.querySelector(`.${cx('slide-info')}`);
+
+        requestAnimationFrame(() => {
+            img?.classList.add(cx('slideInRight'));
+            info?.classList.add(cx('slideInLeft'));
+        });
+    };
     return (
         <div className={cx('wrapper')}>
             <Swiper
                 modules={[Pagination, Autoplay, EffectFade]}
-                pagination={{ clickable: true }}
+                pagination={{
+                    clickable: true,
+                    renderBullet: (index, className) => {
+                        return `<span class="${className}">
+                    <img src="${slidesInfo[index].imgUrl}" alt="thumb" />
+                </span>`;
+                    },
+                }}
                 autoplay={{ delay: 50000, disableOnInteraction: false }}
                 loop={true}
                 slidesPerView={1}
@@ -29,45 +72,10 @@ function Home() {
                 fadeEffect={{ crossFade: true }}
                 speed={1200}
                 className={cx('slide')}
-                onInit={(swiper) => {
-                    // đảm bảo slide đầu có animation khi mount
-                    const active = swiper.slides[swiper.activeIndex];
-                    const image = active.querySelector(`.${cx('cover-image')}`);
-                    const info = active.querySelector(`.${cx('slide-info')}`);
-                    if (image) image.classList.add(cx('slideInRight'));
-                    if (info) info.classList.add(cx('slideInLeft'));
-                }}
+                onInit={(swiper) => handleSlideAnimation(swiper, swiper.activeIndex)}
                 onSlideChangeTransitionStart={(swiper) => {
-                    const prev = swiper.slides[swiper.previousIndex];
-                    const next = swiper.slides[swiper.activeIndex];
-
-                    // remove class trên slide trước (nếu còn)
-                    if (prev) {
-                        const pImg = prev.querySelector(`.${cx('cover-image')}`);
-                        const pInfo = prev.querySelector(`.${cx('slide-info')}`);
-                        if (pImg) pImg.classList.remove(cx('slideInRight'));
-                        if (pInfo) pInfo.classList.remove(cx('slideInLeft'));
-                    }
-
-                    // reset + add class trên slide mới — chạy song song với fade
-                    if (next) {
-                        const nImg = next.querySelector(`.${cx('cover-image')}`);
-                        const nInfo = next.querySelector(`.${cx('slide-info')}`);
-
-                        if (nImg) {
-                            nImg.classList.remove(cx('slideInRight'));
-                            // requestAnimationFrame để đảm bảo browser nhận thay đổi và animate mượt
-                            requestAnimationFrame(() => {
-                                nImg.classList.add(cx('slideInRight'));
-                            });
-                        }
-                        if (nInfo) {
-                            nInfo.classList.remove(cx('slideInLeft'));
-                            requestAnimationFrame(() => {
-                                nInfo.classList.add(cx('slideInLeft'));
-                            });
-                        }
-                    }
+                    resetSlideAnimation(swiper.slides[swiper.previousIndex]);
+                    playSlideAnimation(swiper.slides[swiper.activeIndex]);
                 }}
             >
                 {slidesInfo.map((item, index) => {
@@ -104,7 +112,7 @@ function Home() {
                                             })}
                                         </div>
                                         <div className={cx('movie-tags-2')}>
-                                            {item.topics.map((topic, index) => {
+                                            {item.types.slice(0, 6).map((topic, index) => {
                                                 return (
                                                     <div className={cx('tag-topic')} key={index}>
                                                         <span>{topic}</span>
@@ -115,17 +123,21 @@ function Home() {
                                         <p className={cx('movie-description')}>{item.description}</p>
                                         <div className={cx('movie-actions')}>
                                             <div className={cx('play')}>
-                                                <Link to="/xem-phim/the-long-walk">
+                                                <Link to={item.to}>
                                                     <FontAwesomeIcon className={cx('play-icon')} icon={faPlay} />
                                                 </Link>
                                             </div>
                                             <div className={cx('group-actions')}>
-                                                <div className={cx('action-item')}>
-                                                    <FontAwesomeIcon icon={faHeart} />
-                                                </div>
-                                                <div className={cx('action-item')}>
-                                                    <FontAwesomeIcon icon={faCircleExclamation} />
-                                                </div>
+                                                <Tippy content="Yêu thích" offset={[0, -5]} placement="bottom">
+                                                    <div className={cx('action-item')}>
+                                                        <FontAwesomeIcon icon={faHeart} />
+                                                    </div>
+                                                </Tippy>
+                                                <Tippy content="Xem sau" offset={[0, -5]} placement="bottom">
+                                                    <div className={cx('action-item')}>
+                                                        <FontAwesomeIcon icon={faPlus} />
+                                                    </div>
+                                                </Tippy>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +147,7 @@ function Home() {
                     );
                 })}
             </Swiper>
-            <div className={cx('main-content')}></div>
+            <Topics />
         </div>
     );
 }

@@ -3,7 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useParams } from 'react-router-dom';
 
 import styles from './UserPage.module.scss';
-import { faClockRotateLeft, faHeart, faPlus, faRightFromBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+    faClockRotateLeft,
+    faHeart,
+    faInfinity,
+    faPlus,
+    faRightFromBracket,
+    faUser,
+} from '@fortawesome/free-solid-svg-icons';
+import Profile from './mainContent/Profile/Profile';
 
 const cx = classNames.bind(styles);
 
@@ -22,7 +30,7 @@ function UserPage() {
                         <FontAwesomeIcon icon={faPlus} />
                         <span>Danh sách</span>
                     </Link>
-                    <Link to="/user/xem-tiep" className={cx('item', { active: slug === 'continue' })}>
+                    <Link to="/user/xem-tiep" className={cx('item', { active: slug === 'xem-tiep' })}>
                         <FontAwesomeIcon icon={faClockRotateLeft} />
                         <span>Xem tiếp</span>
                     </Link>
@@ -40,7 +48,10 @@ function UserPage() {
                         />
                     </div>
                     <div className={cx('user-info')}>
-                        <p>C0bra</p>
+                        <div className={cx('name-gender')}>
+                            <p>C0bra</p>
+                            <FontAwesomeIcon icon={faInfinity} />
+                        </div>
                         <p>abcd1234@gmail.com</p>
                     </div>
                     <div className={cx('logout')}>
@@ -53,7 +64,7 @@ function UserPage() {
                 {slug === 'favorite' && <p st> Yêu thích</p>}
                 {slug === 'playlist' && <p>Danh sách</p>}
                 {slug === 'xem-tiep' && <p>Xem tiếp</p>}
-                {slug === 'profile' && <p>Tài khoản</p>}
+                {slug === 'profile' && <Profile />}
             </div>
         </div>
     );

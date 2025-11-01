@@ -7,7 +7,18 @@ import styles from './Dropdown.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Dropdown({ id, label, name, data, type = 'menu', showDropdown, setShowDropdown, userInfo }) {
+function Dropdown({
+    label,
+    name,
+    data,
+    type = null,
+    showDropdown,
+    setShowDropdown,
+    userInfo,
+    columns = 1,
+    width = '20rem',
+    height = 'auto',
+}) {
     const isVisible = showDropdown === name;
 
     const handleToggle = () => {
@@ -77,17 +88,20 @@ function Dropdown({ id, label, name, data, type = 'menu', showDropdown, setShowD
                 <Tippy
                     interactive
                     visible={isVisible}
-                    onClickOutside={() => setShowDropdown(null)}
+                    onClickOutside={handleHide}
                     placement="bottom-start"
                     render={(attrs) => (
-                        <div className={cx('dropdown')} tabIndex="-1" {...attrs}>
-                            <div className={cx('dropdown-list-' + id)}>
-                                {data.map((item, i) => (
-                                    <Link key={i} to={item.to} className={cx('dropdown-item-' + id)}>
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
+                        <div
+                            className={cx('dropdown-list', `grid-${columns}`)}
+                            style={{ width, height }}
+                            tabIndex="-1"
+                            {...attrs}
+                        >
+                            {data.map((item, i) => (
+                                <Link key={i} to={item.to} className={cx('dropdown-item')}>
+                                    <span>{item.name}</span>
+                                </Link>
+                            ))}
                         </div>
                     )}
                 >

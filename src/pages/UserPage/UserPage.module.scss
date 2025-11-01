@@ -58,7 +58,7 @@
     .user-logo {
         width: 5.6rem;
         height: 5.6rem;
-        border-radius: 50%;
+        border-radius: 1rem;
         overflow: hidden;
         border: 2px solid #fff;
 
@@ -72,6 +72,17 @@
     .user-info {
         color: var(--text-color-1);
         font-size: 1.6rem;
+
+        .name-gender {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1rem;
+
+            svg {
+                color: var(--text-color);
+            }
+        }
     }
 
     .logout {
@@ -85,7 +96,6 @@
 }
 
 .main-content {
-    color: red;
     font-size: 3rem;
 }
 
@@ -94,7 +104,7 @@
     width: 60%;
     padding: 4rem;
     height: 50rem;
-    background-color: gray;
+    background-color: transparent;
 }
 // Media Queries
 @media (max-width: 1600px) {
