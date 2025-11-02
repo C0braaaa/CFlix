@@ -5,15 +5,15 @@
     border-radius: 1rem;
 }
 
-.login-modal {
-    width: 86rem;
+.forgot-modal {
+    width: 80rem;
 }
 
 .modal-content {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 6.4rem 6.4rem 6.4rem 48rem;
+    padding: 6.4rem 6.4rem 6.4rem 45rem;
 
     &::before {
         content: '';
@@ -45,10 +45,10 @@
     }
 }
 
-.login-form {
+.forgot-form {
     flex: 1;
 
-    .switch-top-regiter {
+    .switch-top-login {
         font-size: 1.4rem;
         color: var(--text-color-1);
         margin-bottom: 3rem;
@@ -60,7 +60,7 @@
     }
 }
 
-.btn-login {
+.btn-forgot {
     margin-top: 3.5rem;
     display: flex;
     flex-direction: column;
@@ -71,13 +71,6 @@
         margin: 0;
         display: flex;
         gap: 0.5rem;
-
-        .google-icon {
-            width: 1.8rem;
-            height: 1.8rem;
-            margin-right: 8px;
-            transform: translateY(2px);
-        }
     }
 }
 

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { publicRoutes } from './routes/index-routes';
 import DefaultLayout from './layout/DefaultLayout';
 import { Fragment } from 'react';
+import AuthContainer from './features/auth/AuthContainer';
 function App() {
     useEffect(() => {
         // Theo dõi thay đổi của pathname (bằng cách lắng nghe popstate và click link)
@@ -48,6 +49,7 @@ function App() {
                         );
                     })}
                 </Routes>
+                <AuthContainer />
             </div>
         </Router>
     );

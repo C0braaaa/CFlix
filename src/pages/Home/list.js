@@ -5,7 +5,8 @@ export const slidesInfo = [
         imdb: '8.2',
         quality: '4K',
         tagModel: 'T13',
-
+        actor: ['Tom Holland', 'Zendaya', 'Benedict Cumberbatch', 'Michael Keaton'],
+        director: 'Jon Watts',
         releaseInfo: ['2021', '2h 28m'],
         types: ['Chiếu Rạp', 'Gay Cấn', 'Siêu Anh Hùng', 'Marvel', 'Chuyển Thể', 'Phiêu Lưu'],
         description: `
@@ -20,6 +21,7 @@ export const slidesInfo = [
              (Jamie Foxx), Sandman (Thomas Haden Church) và Lizard (Rhys Ifans).
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/f9f0dbe638fb6996e114f12f2ee63aa6.jpg',
+        infoPage: '/phim/spider-man-no-way-home',
         to: '/xem-phim/spider-man-no-way-home',
     },
     {
@@ -28,6 +30,8 @@ export const slidesInfo = [
         imdb: '7.0',
         quality: null,
         tagModel: 'T18',
+        actor: ['Tim Robbins', 'Morgan Freeman', 'Bob Gunton', 'William Sadler'],
+        director: 'Tim Robbins',
 
         releaseInfo: ['2025', '1h 48m'],
         types: ['Chiếu Rạp', 'Gay Cấn', 'Kinh Dị', 'Khoa Học', 'Chuyển Thể', 'Phiêu Lưu'],
@@ -37,6 +41,7 @@ export const slidesInfo = [
             không, họ sẽ bị loại khỏi cuộc chơi, vĩnh viễn.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c21745efee816a40729ad2f2fedb69f0.webp',
+        infoPage: '/phim/the-long-walk',
         to: '/xem-phim/the-long-walk',
     },
     {
@@ -45,6 +50,8 @@ export const slidesInfo = [
         imdb: '6.0',
         quality: '4K',
         tagModel: 'T16',
+        actor: ['Margot Robbie', 'Colin Farrell', 'Benedict Cumberbatch', 'Michael Keaton'],
+        director: 'Darren Aronofsky',
         releaseInfo: ['2025', '1h 49m'],
         types: ['Chính Kịch', 'Chiếu Rạp', 'Tâm Lý', 'Thần Thoại', 'Lãng Mạn', 'Viễn Tưởng'],
         description: `
@@ -56,6 +63,7 @@ export const slidesInfo = [
             hội để thay đổi tương lai.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c6035e3d8cc0d2388997a8f45f23686b.webp',
+        infoPage: '/phim/a-big-bold-beautiful-journey',
         to: '/xem-phim/a-big-bold-beautiful-journey',
     },
     {
@@ -64,6 +72,8 @@ export const slidesInfo = [
         imdb: '6.6',
         quality: null,
         tagModel: 'T13',
+        actor: ['Jared Leto', 'Evan Peters', 'Greta Lee', 'Jodie Turner-Smith', 'Cameron Monaghan', 'Sarah Desjardins'],
+        director: ' Joachim Rønning',
         releaseInfo: ['2025', '1h 59m', 'CAM'],
         types: ['Chiếu Rạp', 'Hành Động', 'Khoa Học', 'Giả Tưởng', 'Phiêu Lưu'],
         description: `
@@ -72,6 +82,7 @@ export const slidesInfo = [
            và những thực thể trí tuệ nhân tạo.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/cedd848ff99c21d69a84f1c610872b4f.webp',
+        infoPage: '/phim/tron-ares',
         to: '/xem-phim/tron-ares',
     },
     {
@@ -80,6 +91,8 @@ export const slidesInfo = [
         imdb: '6.9',
         quality: null,
         tagModel: 'T16',
+        actor: ['Maggie Gyllenhaal', 'Ethan Hawke', 'Tim Robbins', 'Emily Watson', 'Diane Kruger'],
+        director: 'Tim Robbins',
         releaseInfo: ['2025', '1h 45m'],
         types: ['Chiếu Rạp', 'Chính Kịch', 'Tình Cảm', 'Gia Đình', 'Hài', 'Lãng Mạn'],
         description: `
@@ -89,6 +102,7 @@ export const slidesInfo = [
             tất cả.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/d337eec84180302155cff0bdb951e62f.webp',
+        infoPage: '/phim/hoa-hong-co-gai',
         to: '/xem-phim/hoa-hong-co-gai',
     },
 ];

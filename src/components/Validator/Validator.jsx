@@ -4,7 +4,7 @@ import styles from './Validator.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ValidatorForm({ name = '', placeholder = '', type = 'text', rules = '', onSubmit }) {
+function ValidatorForm({ name = '', placeholder = '', type = 'text', rules = '', compareWith = '', onSubmit }) {
     const [value, setValue] = useState('');
     const [error, setError] = useState('');
     const typingTimeoutRef = useRef(null); // dùng để debounce
@@ -18,6 +18,7 @@ function ValidatorForm({ name = '', placeholder = '', type = 'text', rules = '',
             return regex.test(val) ? undefined : msg || 'Email không hợp lệ, vui lòng nhập lại!';
         },
         min: (min) => (val, msg) => val.length >= min ? undefined : msg || `Mật khẩu phải có ít nhất ${min} ký tự`,
+        confirm: (compareValue) => (val, msg) => val === compareValue ? undefined : msg || 'Mật khẩu không khớp nhau!',
     };
 
     // validate theo rules
@@ -35,12 +36,21 @@ function ValidatorForm({ name = '', placeholder = '', type = 'text', rules = '',
             const baseFn = ruleSet[rule];
             if (!baseFn) continue; // ❗ tránh undefined function
 
-            // nếu rule có tham số (vd: min:6) thì gọi hàm cha để lấy hàm con
-            const checkFn = hasValue ? baseFn(ruleInfo[1]) : baseFn;
+            // ✅ Nếu là confirm thì tự đọc giá trị từ input được chỉ định
+            let checkFn;
+            if (rule === 'confirm') {
+                const compareValue =
+                    typeof compareWith === 'string' && compareWith
+                        ? document.getElementById(compareWith)?.value || ''
+                        : compareWith;
+                checkFn = baseFn(compareValue);
+            } else if (hasValue) {
+                checkFn = baseFn(ruleInfo[1]);
+            } else {
+                checkFn = baseFn;
+            }
 
-            // đảm bảo checkFn là hàm thật
             if (typeof checkFn !== 'function') continue;
-
             const msg = checkFn(val);
             if (msg) return msg;
         }

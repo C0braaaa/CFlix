@@ -14,7 +14,7 @@ function Wacth() {
 
     useEffect(() => {
         if (movie) {
-            document.title = `Xem phim ${movie.title} | ${movie.engTitle}`;
+            document.title = `Xem Phim ${movie.title} | ${movie.engTitle}`;
         } else {
             document.title = 'CFLIX | Xem phim';
         }

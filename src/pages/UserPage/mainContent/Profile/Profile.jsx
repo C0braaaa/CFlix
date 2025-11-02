@@ -3,10 +3,12 @@ import classNames from 'classnames/bind';
 
 import styles from './Profile.module.scss';
 import Button from '../../../../components/Button/index-button';
+import { useAuth } from '../../../../features/auth/context/AuthContext';
 
 const cx = classNames.bind(styles);
 
 function Profile() {
+    const { openModal } = useAuth();
     const [gender, setGender] = useState('other');
 
     const handleGenderChange = (e) => {
@@ -81,7 +83,7 @@ function Profile() {
                                 </Button>
                             </div>
                             <div className={cx('btn-change-pass')}>
-                                <Button primary large>
+                                <Button primary large onClick={() => openModal('forgot')}>
                                     Đổi mật khẩu
                                 </Button>
                             </div>

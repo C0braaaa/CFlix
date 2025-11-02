@@ -65,8 +65,8 @@ function FullTopics() {
             <div className={cx('topics-list')}>
                 {list.map((item, index) => {
                     return (
-                        <Link to={item.to}>
-                            <div className={cx('topic-item')} style={{ backgroundColor: item.bgColor }} key={index}>
+                        <Link to={item.to} key={index}>
+                            <div className={cx('topic-item')} style={{ backgroundColor: item.bgColor }}>
                                 <h2 className={cx('line-1')}>{item.name}</h2>
                                 <div className={cx('line-2')}>
                                     <span>Xem chủ đề</span>

@@ -7,7 +7,6 @@
 
 .register-modal {
     width: 86rem;
-    height: 60rem;
 }
 
 .modal-content {
@@ -26,6 +25,9 @@
         border-radius: 1rem 0 0 1rem;
         background-image: url(../../../../../public/assets/images/postersfake.jpg);
         background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        object-fit: cover;
     }
 }
 
@@ -46,7 +48,7 @@
 .register-form {
     flex: 1;
 
-    .switch-top-regiter {
+    .switch-top-login {
         font-size: 1.4rem;
         color: var(--text-color-1);
         margin-bottom: 3rem;
@@ -58,7 +60,7 @@
     }
 }
 
-.btn-login {
+.btn-register {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;

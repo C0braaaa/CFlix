@@ -89,8 +89,10 @@ function Home() {
                                         </div>
                                     </div>
                                     <div className={cx('slide-info')}>
-                                        <h2 className={cx('movie-title')}>{item.title}</h2>
-                                        <p className={cx('movie-eng-title')}>{item.engTitle}</p>
+                                        <Link to={item.infoPage}>
+                                            <h2 className={cx('movie-title')}>{item.title}</h2>
+                                            <p className={cx('movie-eng-title')}>{item.engTitle}</p>
+                                        </Link>
                                         <div className={cx('movie-tags-1')}>
                                             <div className={cx('IMDb-tag')}>
                                                 <span>{item.imdb}</span>

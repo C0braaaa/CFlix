@@ -12,16 +12,13 @@ import { genres, nations, more, user } from './listDropdown.js';
 import Dropdown from './Dropdown/Dropdown.jsx';
 import Search from './Search/Search.jsx';
 import { useAuth } from '../../features/auth/context/AuthContext.jsx';
-import AuthModal from '../../features/auth/components/AuthModal/AuthModal.jsx';
-import LoginForm from '../../features/auth/components/LoginForm/LoginForm.jsx';
-import RegisterForm from '../../features/auth/components/RegisterForm/RegisterForm.jsx';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-    let currentUser = false;
+    let currentUser = true;
 
-    const { isModalOpen, modalType, openModal, closeModal } = useAuth();
+    const { openModal } = useAuth();
 
     const [scroll, setScroll] = useState(false);
     const [showDropdown, setShowDropdown] = useState(null);
@@ -151,11 +148,6 @@ function Header() {
                     </div>
                 </div>
             </div>
-            {/* // Modal */}
-            <AuthModal isOpen={isModalOpen} onClose={closeModal}>
-                {modalType === 'login' && <LoginForm />}
-                {modalType === 'register' && <RegisterForm />}
-            </AuthModal>
         </>
     );
 }

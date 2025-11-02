@@ -8,6 +8,7 @@ import Nations from '../pages/Nations/Nations';
 import UserPage from '../pages/UserPage/UserPage';
 import FullTopics from '../pages/Topics/FullTopics';
 import TopicsDetail from '../pages/Topics/TopicsDetail';
+import MovieInfo from '../pages/MovieInfo/MovieInfo';
 import Wacth from '../pages/Watch/Watch';
 
 // public routes
@@ -19,6 +20,7 @@ const publicRoutes = [
     { path: config.routes.topics, component: FullTopics },
     { path: config.routes.topicsDetail, component: TopicsDetail },
     { path: config.routes.user, component: UserPage },
+    { path: config.routes.movieInfo, component: MovieInfo },
     { path: config.routes.watch, component: Wacth },
 ];
 
