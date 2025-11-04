@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from './DefaultLayout.module.scss';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../components/Button/index-button';

@@ -137,3 +137,11 @@
     color: #fff;
     font-size: 1.6rem;
 }
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0); // trong suốt hoàn toàn
+    z-index: 90; // thấp hơn Tippy, cao hơn Swiper
+    cursor: default;
+}

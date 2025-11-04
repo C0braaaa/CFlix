@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 37rem;
     max-height: 60rem;
     border-radius: 8px;
-    padding-top: 8px;
-    background: rgb(255, 255, 255);
+    padding: 1rem;
+    background-color: var(--background-color);
     box-shadow: rgb(0 0 0 / 12%) 0 2px 12px;
     min-height: 100px;
 }

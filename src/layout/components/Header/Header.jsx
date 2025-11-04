@@ -3,20 +3,20 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'tippy.js/dist/tippy.css';
 
-import Button from '../Button/index-button.jsx';
+import Button from '../../../components/Button/index-button.jsx';
 import styles from './Header.module.scss';
 import { faBell, faDoorOpen, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import config from '../../config/index-config.js';
+import config from '../../../config/index-config.js';
 import { genres, nations, more, user } from './listDropdown.js';
-import Dropdown from './Dropdown/Dropdown.jsx';
-import Search from './Search/Search.jsx';
-import { useAuth } from '../../features/auth/context/AuthContext.jsx';
+import Dropdown from '../../../components/Dropdown/Dropdown.jsx';
+import Search from '../Search/Search.jsx';
+import { useAuth } from '../../../features/auth/context/AuthContext.jsx';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-    let currentUser = true;
+    let currentUser = false;
 
     const { openModal } = useAuth();
 
@@ -64,8 +64,8 @@ function Header() {
                                 showDropdown={showDropdown}
                                 setShowDropdown={setShowDropdown}
                                 columns={4}
-                                width="52rem"
-                                height="65rem"
+                                width="45rem"
+                                height="30rem"
                             />
                         </div>
                         <div className={cx('menu-item')}>
@@ -75,9 +75,9 @@ function Header() {
                                 data={nations}
                                 showDropdown={showDropdown}
                                 setShowDropdown={setShowDropdown}
-                                columns={1}
-                                width="16.4rem"
-                                height="42rem"
+                                columns={3}
+                                width="40rem"
+                                height="45rem"
                             />
                         </div>
                         <div className={cx('menu-item')}>

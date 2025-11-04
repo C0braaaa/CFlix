@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --primary: #fff;
@@ -17,7 +17,7 @@
     --background-color-5: #1e2545;
 
     --border-color: #fff4;
-    --font-family: 'Montserrat', sans-serif;
+    --font-family: 'Inter', sans-serif;
 }
 
 * {
@@ -36,6 +36,7 @@ body {
     text-rendering: optimizeLegibility;
     background-color: var(--background-color);
 }
+
 a {
     text-decoration: none !important;
     color: #fff;

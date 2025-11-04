@@ -26,6 +26,11 @@
         cursor: -webkit-grabbing;
     }
 }
+.cover-fade,
+.cover-image,
+.cover-img {
+    pointer-events: none;
+}
 
 .cover-image {
     position: absolute;
