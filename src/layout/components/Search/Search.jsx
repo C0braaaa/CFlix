@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,6 +20,7 @@ function Search() {
     const [isLoading, setIsLoading] = useState(false); // ✅ thêm state loading
 
     const inputRef = useRef();
+    const navigate = useNavigate();
     const debouncedValue = useDebounce(input, 500);
 
     const handleDeleteText = () => {
@@ -37,17 +39,14 @@ function Search() {
         }
 
         const fetchApi = async () => {
-            setIsLoading(true); // ✅ bật loader
-            const timer = new Promise((resolve) => setTimeout(resolve, 500)); // ✅ chờ tối thiểu 500ms
-
+            setIsLoading(true);
             try {
-                const resultPromise = searchServices.search(debouncedValue);
-                const [result] = await Promise.all([resultPromise, timer]); // ✅ đợi cả API và 500ms cùng hoàn tất
-                setSearchResult(result);
+                const result = await searchServices.search(debouncedValue);
+                setSearchResult(result.items || []);
             } catch (error) {
                 console.error('Search error:', error);
             } finally {
-                setIsLoading(false); // ✅ tắt loader
+                setIsLoading(false);
             }
         };
 
@@ -82,7 +81,7 @@ function Search() {
                                     <>
                                         <h4 className={cx('search-title')}>Kết quả tìm kiếm</h4>
                                         {searchResult.slice(0, 5).map((movie, index) => (
-                                            <MovieItem key={index} data={movie} />
+                                            <MovieItem key={index} data={movie} onClick={() => setShowResult(false)} />
                                         ))}
                                     </>
                                 )}
@@ -100,6 +99,14 @@ function Search() {
                                 placeholder="Tìm kiếm phim, diễn viên..."
                                 onChange={(e) => setInput(e.target.value)}
                                 onFocus={() => setShowResult(true)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && input.trim()) {
+                                        navigate(`/tim-kiem?q=${encodeURIComponent(input.trim())}`);
+                                        setShowResult(false);
+                                        setInput('');
+                                        inputRef.current.blur();
+                                    }
+                                }}
                                 spellCheck={false}
                             />
 
@@ -109,7 +116,15 @@ function Search() {
                                 </div>
                             )}
 
-                            <div className={cx('search-icon')}>
+                            <div
+                                className={cx('search-icon')}
+                                onClick={() => {
+                                    navigate(`/tim-kiem?q=${encodeURIComponent(input.trim())}`);
+                                    setShowResult(false);
+                                    setInput('');
+                                    inputRef.current.blur();
+                                }}
+                            >
                                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </div>
                         </div>

@@ -2,7 +2,10 @@ import config from '../config/index-config';
 
 // Pages
 import Home from '../pages/Home/Home';
+import Find from '../pages/Find/Find';
 import SingleMovie from '../pages/SingleMovie/SingleMovie';
+import SeriesMovie from '../pages/SeriesMovie/SeriesMovie';
+import Cartoons from '../pages/Cartoons/Cartoons';
 import Genres from '../pages/Genres/Genres';
 import Nations from '../pages/Nations/Nations';
 import UserPage from '../pages/UserPage/UserPage';
@@ -14,7 +17,10 @@ import Wacth from '../pages/Watch/Watch';
 // public routes
 const publicRoutes = [
     { path: config.routes.home, component: Home },
+    { path: config.routes.search, component: Find },
     { path: config.routes.singleMovie, component: SingleMovie },
+    { path: config.routes.series, component: SeriesMovie },
+    { path: config.routes.cartoons, component: Cartoons },
     { path: config.routes.category, component: Genres },
     { path: config.routes.nation, component: Nations },
     { path: config.routes.topics, component: FullTopics },

@@ -1,25 +1,21 @@
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-
-import styles from './SingleMovie.module.scss';
-import { singleMovie } from '../../services/moviesServices';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-const cx = classNames.bind(styles);
-function SingleMovie() {
-    const [movies, setMovies] = useState([]);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [inputPage, setInputPage] = useState(page);
-    const [isLoader, setIsLoader] = useState(false);
+import styles from './Find.module.scss';
+import { search } from '../../services/searchService';
 
-    useEffect(() => {
-        document.title = 'Phim Lẻ';
-    }, []);
+const cx = classNames.bind(styles);
+
+function Find() {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const query = params.get('q');
 
     const decodeHTML = (html) => {
         const txt = document.createElement('textarea');
@@ -27,26 +23,37 @@ function SingleMovie() {
         return txt.value;
     };
 
-    const fetchMovies = async (pageNum) => {
+    const [movies, setMovies] = useState([]);
+    const [isLoader, setIsLoader] = useState(false);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [inputPage, setInputPage] = useState(page);
+
+    const fetchMovie = async () => {
         setIsLoader(true);
         try {
-            const data = await singleMovie(pageNum, 32);
+            const data = await search(query, page);
             setMovies(data.items || []);
             setTotalPages(data.params?.pagination?.totalPages || data.totalPages || 1);
         } catch (error) {
-            alert.error('Chet me API no loi cho nao roi:', error);
+            console.error('Chet me API no loi cho nao roi:', error);
         } finally {
             setIsLoader(false);
         }
     };
 
     useEffect(() => {
-        fetchMovies(page);
+        document.title = `Tìm kiếm "${query}"`;
+    });
+
+    useEffect(() => {
+        fetchMovie();
         setInputPage(page);
-    }, [page]);
+    }, [query, page]);
+
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>Phim lẻ</h2>
+            <h2 className={cx('title')}>Kết quả tìm kiếm của "{query}"</h2>
             <div className={cx('content')}>
                 {isLoader ? (
                     <div className={cx('loader')}></div>
@@ -117,4 +124,4 @@ function SingleMovie() {
     );
 }
 
-export default SingleMovie;
+export default Find;

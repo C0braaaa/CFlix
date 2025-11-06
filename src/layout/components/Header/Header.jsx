@@ -57,6 +57,9 @@ function Header() {
                             <Link to={config.routes.series}>Phim Bộ</Link>
                         </div>
                         <div className={cx('menu-item')}>
+                            <Link to="/hoat-hinh">Hoạt Hình</Link>
+                        </div>
+                        <div className={cx('menu-item')}>
                             <Dropdown
                                 label="Thể Loại"
                                 name="genres"

@@ -3,14 +3,14 @@ import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import styles from './SingleMovie.module.scss';
-import { singleMovie } from '../../services/moviesServices';
+import styles from './Cartoons.module.scss';
+import { cartoons } from '../../services/moviesServices';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
-function SingleMovie() {
+function Cartoons() {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -18,7 +18,7 @@ function SingleMovie() {
     const [isLoader, setIsLoader] = useState(false);
 
     useEffect(() => {
-        document.title = 'Phim Lẻ';
+        document.title = 'Phim Hoạt Hình';
     }, []);
 
     const decodeHTML = (html) => {
@@ -30,7 +30,7 @@ function SingleMovie() {
     const fetchMovies = async (pageNum) => {
         setIsLoader(true);
         try {
-            const data = await singleMovie(pageNum, 32);
+            const data = await cartoons(pageNum, 32);
             setMovies(data.items || []);
             setTotalPages(data.params?.pagination?.totalPages || data.totalPages || 1);
         } catch (error) {
@@ -46,7 +46,7 @@ function SingleMovie() {
     }, [page]);
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>Phim lẻ</h2>
+            <h2 className={cx('title')}>Phim Hoạt Hình</h2>
             <div className={cx('content')}>
                 {isLoader ? (
                     <div className={cx('loader')}></div>
@@ -61,8 +61,8 @@ function SingleMovie() {
                                             alt={movie.name}
                                         />
                                         <div className={cx('quality')}>
-                                            <Tippy content="Chất lượng">
-                                                <span>{movie.quality}</span>
+                                            <Tippy content="Tập hiện tại">
+                                                <span>{movie.episode_current.match(/\d+/)?.[0] || 'N/A'}</span>
                                             </Tippy>
                                             <Tippy content="Năm phát hành">
                                                 <span>{movie.year}</span>
@@ -117,4 +117,4 @@ function SingleMovie() {
     );
 }
 
-export default SingleMovie;
+export default Cartoons;

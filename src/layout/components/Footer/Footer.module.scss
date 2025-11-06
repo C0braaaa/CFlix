@@ -1,17 +1,16 @@
 .wrapper {
     --min-height: 30rem;
-
     width: 100%;
-    max-width: 1900px;
-    padding: 0 5rem;
     background-color: var(--background-color-1);
-    margin-top: 16rem;
+    margin-top: auto; /* Đẩy footer xuống dưới cùng */
 }
 
 .footer-elements {
     width: 100%;
+    max-width: 1900px;
     min-height: var(--min-height);
-    padding: 3.2rem 0;
+    padding: 3.2rem 5rem;
+    margin: 0 auto; /* Căn giữa content */
     z-index: 5;
 
     .line-1 {

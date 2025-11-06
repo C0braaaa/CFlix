@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import styles from './MovieItem.module.scss';
 
 const cx = classNames.bind(styles);
-function MovieItem({ data }) {
+function MovieItem({ data, onClick }) {
     return (
-        <Link to="/tim-kiem" className={cx('wrapper')}>
+        <Link to={`/phim/${data.slug}`} className={cx('wrapper')} onClick={onClick}>
             <img
                 className={cx('poster')}
                 src={`https://images.weserv.nl/?url=phimimg.com/${data.poster_url}`}
