@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const httpRequest = axios.create({
     baseURL: 'https://phimapi.com/',
-    timeout: 10000,
+    timeout: 60000,
     headers: {
         Accept: 'application/json',
     },

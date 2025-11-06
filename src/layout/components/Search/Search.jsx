@@ -81,7 +81,15 @@ function Search() {
                                     <>
                                         <h4 className={cx('search-title')}>Kết quả tìm kiếm</h4>
                                         {searchResult.slice(0, 5).map((movie, index) => (
-                                            <MovieItem key={index} data={movie} onClick={() => setShowResult(false)} />
+                                            <MovieItem
+                                                key={index}
+                                                data={movie}
+                                                onClick={() => {
+                                                    setShowResult(false);
+                                                    setInput('');
+                                                    inputRef.current.blur();
+                                                }}
+                                            />
                                         ))}
                                     </>
                                 )}

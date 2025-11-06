@@ -21,8 +21,8 @@ export const slidesInfo = [
              (Jamie Foxx), Sandman (Thomas Haden Church) và Lizard (Rhys Ifans).
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/f9f0dbe638fb6996e114f12f2ee63aa6.jpg',
-        infoPage: '/phim/spider-man-no-way-home',
-        to: '/xem-phim/spider-man-no-way-home',
+        infoPage: '/phim/nguoi-nhen-khong-con-nha',
+        to: '/xem-phim/nguoi-nhen-khong-con-nha',
     },
     {
         title: 'Trăm Dặm Tử Thần',
@@ -41,8 +41,8 @@ export const slidesInfo = [
             không, họ sẽ bị loại khỏi cuộc chơi, vĩnh viễn.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c21745efee816a40729ad2f2fedb69f0.webp',
-        infoPage: '/phim/the-long-walk',
-        to: '/xem-phim/the-long-walk',
+        infoPage: '/phim/tram-dam-tu-than',
+        to: '/xem-phim/tram-dam-tu-than',
     },
     {
         title: 'Hành Trình Rực Rỡ Ta Đã Yêu',
@@ -63,8 +63,8 @@ export const slidesInfo = [
             hội để thay đổi tương lai.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c6035e3d8cc0d2388997a8f45f23686b.webp',
-        infoPage: '/phim/a-big-bold-beautiful-journey',
-        to: '/xem-phim/a-big-bold-beautiful-journey',
+        infoPage: '/phim/hanh-trinh-ruc-ru-ta-da-yeu',
+        to: '/xem-phim/hanh-trinh-ruc-ru-ta-da-yeu',
     },
     {
         title: 'Trò Chơi Ảo Giác: Ares',
@@ -82,8 +82,8 @@ export const slidesInfo = [
            và những thực thể trí tuệ nhân tạo.
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/cedd848ff99c21d69a84f1c610872b4f.webp',
-        infoPage: '/phim/tron-ares',
-        to: '/xem-phim/tron-ares',
+        infoPage: '/phim/tro-choi-ao-giac-ares',
+        to: '/xem-phim/tro-choi-ao-giac-ares',
     },
     {
         title: 'Hoa Hồng Có Gai',

@@ -19,6 +19,8 @@ import { Topics } from './component/index';
 const cx = classNames.bind(styles);
 
 function Home() {
+    const user = false;
+
     useEffect(() => {
         document.title = 'CFlix - Phim Hay Xem Là Ngất Ngay';
     }, []);
@@ -129,18 +131,20 @@ function Home() {
                                                     <FontAwesomeIcon className={cx('play-icon')} icon={faPlay} />
                                                 </Link>
                                             </div>
-                                            <div className={cx('group-actions')}>
-                                                <Tippy content="Yêu thích" offset={[0, -5]} placement="bottom">
-                                                    <div className={cx('action-item')}>
-                                                        <FontAwesomeIcon icon={faHeart} />
-                                                    </div>
-                                                </Tippy>
-                                                <Tippy content="Xem sau" offset={[0, -5]} placement="bottom">
-                                                    <div className={cx('action-item')}>
-                                                        <FontAwesomeIcon icon={faPlus} />
-                                                    </div>
-                                                </Tippy>
-                                            </div>
+                                            {user && (
+                                                <div className={cx('group-actions')}>
+                                                    <Tippy content="Yêu thích" offset={[0, -5]} placement="bottom">
+                                                        <div className={cx('action-item')}>
+                                                            <FontAwesomeIcon icon={faHeart} />
+                                                        </div>
+                                                    </Tippy>
+                                                    <Tippy content="Xem sau" offset={[0, -5]} placement="bottom">
+                                                        <div className={cx('action-item')}>
+                                                            <FontAwesomeIcon icon={faPlus} />
+                                                        </div>
+                                                    </Tippy>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

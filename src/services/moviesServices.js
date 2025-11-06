@@ -35,3 +35,12 @@ export const cartoons = async (page = 1, limit = 32) => {
         return {};
     }
 };
+
+export const detail = async (slug) => {
+    try {
+        const res = await request.get(`phim/${slug}`);
+        return res || [];
+    } catch (error) {
+        console.error('Chet me API no loi cho nao roi:', error);
+    }
+};

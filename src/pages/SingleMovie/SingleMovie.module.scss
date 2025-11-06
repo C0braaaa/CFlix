@@ -84,6 +84,9 @@
         line-clamp: 1;
         -webkit-line-clamp: 1;
         overflow: hidden;
+        text-align: center;
+        -webkit-box-pack: center;
+        width: 100%;
         margin-top: 5px;
         font-weight: 400;
     }
@@ -145,7 +148,7 @@
         color: var(--text-color);
         font-size: 1.6rem;
         padding: 8px 14px;
-        border-radius: 50%;
+        border-radius: 1rem;
         cursor: pointer;
         font-weight: 500;
         transition: 0.2s;

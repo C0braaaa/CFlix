@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -29,7 +29,7 @@ function Find() {
     const [totalPages, setTotalPages] = useState(1);
     const [inputPage, setInputPage] = useState(page);
 
-    const fetchMovie = async () => {
+    const fetchMovie = useCallback(async () => {
         setIsLoader(true);
         try {
             const data = await search(query, page);
@@ -40,7 +40,7 @@ function Find() {
         } finally {
             setIsLoader(false);
         }
-    };
+    }, [query, page]);
 
     useEffect(() => {
         document.title = `Tìm kiếm "${query}"`;
@@ -49,7 +49,11 @@ function Find() {
     useEffect(() => {
         fetchMovie();
         setInputPage(page);
-    }, [query, page]);
+    }, [fetchMovie, page]);
+
+    useEffect(() => {
+        setPage(1);
+    }, [query]);
 
     return (
         <div className={cx('wrapper')}>
