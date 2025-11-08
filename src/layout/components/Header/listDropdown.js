@@ -67,8 +67,8 @@ export const nations = [
 
 export const more = [
     {
-        name: 'Lịch chiếu',
-        to: '/lich-chieu',
+        name: 'Phim mới cập nhật',
+        to: '/phim-moi-cap-nhat',
     },
     {
         name: 'Chủ đề',

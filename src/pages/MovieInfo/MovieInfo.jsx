@@ -18,6 +18,12 @@ function MovieInfo() {
     const [episodes, setEpisodes] = useState([]);
     const [input, setInput] = useState('');
 
+    const decodeHTML = (html) => {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
+
     useEffect(() => {
         document.title = `Thông tin phim ${movie.name}`;
     }, [movie]);
@@ -71,7 +77,7 @@ function MovieInfo() {
                     </div>
                     <div className={cx('description')}>
                         <h2 className={cx('title')}>Nội dung:</h2>
-                        <p className={cx('desc')}>{movie.content}</p>
+                        <p className={cx('desc')}>{decodeHTML(movie.content)}</p>
                     </div>
                     <p className={cx('country')}>
                         Quốc gia: <span>{movie?.country?.[0]?.name}</span>
@@ -80,7 +86,7 @@ function MovieInfo() {
                         Diễn viên: <span>{movie?.actor?.join(', ')}</span>
                     </p>
                     <p className={cx('director')}>
-                        Đạo diễn: <span>{movie.director}</span>
+                        Đạo diễn: <span>{movie?.director?.join(', ')}</span>
                     </p>
                 </div>
                 <div className={cx('right-side')}>

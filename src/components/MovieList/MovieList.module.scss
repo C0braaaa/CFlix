@@ -57,6 +57,9 @@
         span {
             padding: 0 0.5rem;
             height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         span:first-child {
@@ -87,11 +90,11 @@
         line-clamp: 1;
         -webkit-line-clamp: 1;
         overflow: hidden;
+        margin-top: 5px;
+        font-weight: 400;
         text-align: center;
         -webkit-box-pack: center;
         width: 100%;
-        margin-top: 5px;
-        font-weight: 400;
     }
 
     .name {
@@ -114,7 +117,7 @@
     margin-bottom: 10rem;
 
     .page {
-        width: 20.5rem;
+        width: 22rem;
         height: 5rem;
         display: flex;
         justify-content: center;
@@ -199,19 +202,6 @@
     }
     100% {
         background-size: 20% 100%, 20% 100%, 20% 100%;
-    }
-}
-
-// media queries
-@media (max-width: 1600px) {
-    .wrapper {
-        padding: 0 5rem;
-    }
-    .list-items {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 1rem;
     }
 }
 

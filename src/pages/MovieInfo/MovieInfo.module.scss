@@ -243,7 +243,7 @@
         overflow-y: auto;
         margin-top: 1rem;
         display: grid;
-        grid-template-columns: repeat(15, 1fr);
+        grid-template-columns: repeat(10, 1fr);
         gap: 1rem;
 
         .item {
@@ -296,6 +296,11 @@
         color: var(--text-color);
         font-size: 1.6rem;
         resize: none;
+        border: 1px solid transparent;
+
+        &:focus {
+            border-color: var(--primary-text);
+        }
     }
     .send {
         display: flex;
@@ -313,7 +318,7 @@
 
     .count {
         position: absolute;
-        right: 1.5rem;
+        right: 1.8rem;
         top: 1.1rem;
         font-size: 1.4rem;
         color: var(--text-color);
