@@ -1,13 +1,17 @@
-// import classNames from 'classnames/bind';
 import { useParams } from 'react-router-dom';
 
-// import styles from './Genres.module.scss';
-
-// const cx = classNames.bind(styles);
+import { type as fetchByType } from '../../services/moviesServices';
+import MovieList from '../../components/MovieList/MovieList';
 function Genres() {
     const { slug } = useParams();
 
-    return <h1>Thể loại - {slug}</h1>;
+    const formatTitle = (slug) => slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const fetchMoviesByGenre = async (page, limit) => {
+        return await fetchByType(page, limit, slug);
+    };
+
+    return <MovieList title={`Thể loại ${formatTitle(slug)}`} fetchFunction={fetchMoviesByGenre} type={'type'} />;
 }
 
 export default Genres;

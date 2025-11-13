@@ -103,7 +103,7 @@ function Dropdown({
                                 {...attrs}
                             >
                                 {data.map((item, i) => (
-                                    <Link key={i} to={item.to} className={cx('dropdown-item')}>
+                                    <Link key={i} to={item.to} className={cx('dropdown-item')} onClick={handleHide}>
                                         <span>{item.name}</span>
                                     </Link>
                                 ))}

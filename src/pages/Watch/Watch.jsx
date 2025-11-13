@@ -15,7 +15,7 @@ function Wacth() {
     const [episodes, setEpisodes] = useState([]);
 
     useEffect(() => {
-        document.title = `Xem phim ${movie.name}`;
+        movie.name ? (document.title = `Xem Phim ${movie.name}`) : (document.title = 'Xem Phim');
     }, [movie]);
 
     useEffect(() => {

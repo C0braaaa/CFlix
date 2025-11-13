@@ -82,7 +82,7 @@ function Find() {
                                             </div>
                                         </div>
                                         <div className={cx('info')}>
-                                            <h4 className={cx('name')}>{movie.name}</h4>
+                                            <h4 className={cx('name')}>{decodeHTML(movie.name)}</h4>
                                             <h4 className={cx('original-name')}>{decodeHTML(movie.origin_name)}</h4>
                                         </div>
                                     </div>

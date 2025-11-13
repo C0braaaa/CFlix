@@ -25,7 +25,7 @@ function MovieInfo() {
     };
 
     useEffect(() => {
-        document.title = `Thông tin phim ${movie.name}`;
+        movie.name ? (document.title = `Thông tin phim ${movie.name}`) : (document.title = 'Thông tin phim');
     }, [movie]);
 
     useEffect(() => {

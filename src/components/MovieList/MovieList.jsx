@@ -76,6 +76,17 @@ function MovieList({ title, fetchFunction, type }) {
                         </Tippy>
                     </>
                 );
+            case 'type':
+                return (
+                    <>
+                        <Tippy content="Chất lượng">
+                            <span>{movie.quality}</span>
+                        </Tippy>
+                        <Tippy content="Năm phát hành">
+                            <span>{movie.year}</span>
+                        </Tippy>
+                    </>
+                );
             default:
                 return null;
         }
@@ -93,10 +104,14 @@ function MovieList({ title, fetchFunction, type }) {
                             <Link to={`/phim/${movie.slug}`} key={movie._id}>
                                 <div className={cx('item')}>
                                     <div className={cx('poster')}>
-                                        <img
-                                            src={`https://images.weserv.nl/?url=phimimg.com/${movie.poster_url}`}
-                                            alt={movie.name}
-                                        />
+                                        {movie.poster_url ? (
+                                            <img
+                                                src={`https://images.weserv.nl/?url=phimimg.com/${movie.poster_url}`}
+                                                alt={movie.name}
+                                            />
+                                        ) : (
+                                            <img src="assets/images/defaultimg.jpg" alt="not found" />
+                                        )}
                                         <div className={cx('quality')}>{renderExtraInfo(movie)}</div>
                                     </div>
                                     <div className={cx('info')}>

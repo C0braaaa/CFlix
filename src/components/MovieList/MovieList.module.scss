@@ -217,3 +217,21 @@
         gap: 1rem;
     }
 }
+
+// responsive for mobile
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0 1rem;
+    }
+
+    .list-items {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .item {
+        width: 21.5rem;
+    }
+}

@@ -1,11 +1,17 @@
-import classNames from 'classnames/bind';
+import { useParams } from 'react-router-dom';
 
-import styles from './Nations.module.scss';
-
-const cx = classNames.bind(styles);
-
+import { nations } from '../../services/moviesServices';
+import MovieList from '../../components/MovieList/MovieList';
 function Nations() {
-    return <h1>Quoc Gia</h1>;
+    const { slug } = useParams();
+
+    const formatTitle = (slug) => slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const fetchMoviesByNation = async (page, limit) => {
+        return await nations(page, limit, slug);
+    };
+
+    return <MovieList title={`Quốc gia ${formatTitle(slug)}`} fetchFunction={fetchMoviesByNation} type={'type'} />;
 }
 
 export default Nations;

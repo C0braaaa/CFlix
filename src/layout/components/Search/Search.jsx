@@ -31,6 +31,14 @@ function Search() {
 
     const handleHideResult = () => setShowResult(false);
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' ')) {
+            setInput(searchValue);
+        }
+    };
+
     useEffect(() => {
         if (!debouncedValue.trim()) {
             setSearchResult([]);
@@ -105,7 +113,7 @@ function Search() {
                                 className={cx('search-input')}
                                 type="text"
                                 placeholder="Tìm kiếm phim, diễn viên..."
-                                onChange={(e) => setInput(e.target.value)}
+                                onChange={handleChange}
                                 onFocus={() => setShowResult(true)}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter' && input.trim()) {
