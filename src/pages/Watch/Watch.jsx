@@ -10,7 +10,7 @@ import { faCircleLeft, faHeart, faPlus } from '@fortawesome/free-solid-svg-icons
 const cx = classNames.bind(styles);
 
 function Wacth() {
-    const { slug } = useParams();
+    const { slug, episode } = useParams();
     const [movie, setMovie] = useState([]);
     const [episodes, setEpisodes] = useState([]);
 
@@ -32,6 +32,9 @@ function Wacth() {
         fetchMovie();
     }, [slug]);
 
+    const currentEpisode =
+        episodes?.[0]?.server_data?.find((ep) => ep.slug === episode) || episodes?.[0]?.server_data?.[0];
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('l-1')}>
@@ -45,12 +48,12 @@ function Wacth() {
             <div className={cx('video')}>
                 <iframe
                     key={movie._id}
-                    src={episodes?.[0]?.server_data?.[0]?.link_embed}
+                    src={currentEpisode?.link_embed}
                     width="100%"
                     height="1000"
                     allowFullScreen
                     loading="lazy"
-                    frameborder="0"
+                    frameBorder="0"
                     title={movie.name}
                     style={{ borderRadius: ' 1rem 1rem 0 0' }}
                 ></iframe>
@@ -65,6 +68,22 @@ function Wacth() {
                     </div>
                 </div>
             </div>
+            {movie?.episode_total > 1 && (
+                <>
+                    <h2 className={cx('title-2')}>Danh sách tập</h2>
+                    <div className={cx('episodes')}>
+                        {episodes?.[0]?.server_data?.map((ep, index) => (
+                            <Link
+                                to={`/xem-phim/${slug}/${ep.slug}`}
+                                className={cx('episode', { active: ep.slug === episode })}
+                                key={index}
+                            >
+                                {ep.name.split(' ')[1]}
+                            </Link>
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     );
 }

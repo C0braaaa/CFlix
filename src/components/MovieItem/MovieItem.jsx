@@ -5,6 +5,12 @@ import styles from './MovieItem.module.scss';
 
 const cx = classNames.bind(styles);
 function MovieItem({ data, onClick }) {
+    const decodeHTML = (html) => {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
+
     return (
         <Link to={`/phim/${data.slug}`} className={cx('wrapper')} onClick={onClick}>
             <img
@@ -15,9 +21,9 @@ function MovieItem({ data, onClick }) {
             />
             <div className={cx('info')}>
                 <h4 className={cx('movie-name')}>
-                    <span>{data.name}</span>
+                    <span>{decodeHTML(data.name)}</span>
                 </h4>
-                <span className={cx('original-name')}>{data.origin_name}</span>
+                <span className={cx('original-name')}>{decodeHTML(data.origin_name)}</span>
                 <span className={cx('more-info')}>
                     {data.year} • {data.time}
                 </span>

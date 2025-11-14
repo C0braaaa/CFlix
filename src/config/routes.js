@@ -9,7 +9,7 @@ const routes = {
     topics: '/chu-de',
     topicsDetail: '/chu-de/:slug',
     movieInfo: '/phim/:slug',
-    watch: '/xem-phim/:slug',
+    watch: '/xem-phim/:slug/:episode',
     user: '/user/:slug',
 };
 

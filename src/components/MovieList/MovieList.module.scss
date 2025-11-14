@@ -208,13 +208,16 @@
 // media queries
 @media (max-width: 1600px) {
     .wrapper {
-        padding: 0 5rem;
+        padding: 0 2rem;
     }
     .list-items {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(8, 1fr);
         gap: 1rem;
+    }
+    .item {
+        width: 17rem;
     }
 }
 
@@ -232,6 +235,6 @@
     }
 
     .item {
-        width: 21.5rem;
+        width: 20rem;
     }
 }

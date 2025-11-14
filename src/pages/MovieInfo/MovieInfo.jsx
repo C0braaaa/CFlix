@@ -91,7 +91,10 @@ function MovieInfo() {
                 </div>
                 <div className={cx('right-side')}>
                     <div className={cx('l-1')}>
-                        <Link to={`/xem-phim/${movie.slug}`} className={cx('btn-play')}>
+                        <Link
+                            to={`/xem-phim/${movie.slug}/${episodes?.[0]?.server_data?.[0]?.slug}`}
+                            className={cx('btn-play')}
+                        >
                             <Button primary className={cx('btn')} leftIcon={<FontAwesomeIcon icon={faPlay} />}>
                                 Xem ngay
                             </Button>
@@ -126,7 +129,7 @@ function MovieInfo() {
                             </div>
                             <div className={cx('items')}>
                                 {episodes?.[0]?.server_data?.map((ep, index) => (
-                                    <Link className={cx('item')} key={index}>
+                                    <Link to={`/xem-phim/${slug}/${ep.slug}`} className={cx('item')} key={index}>
                                         {ep.name.split(' ')[1]}
                                     </Link>
                                 ))}

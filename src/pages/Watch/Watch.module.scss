@@ -50,3 +50,39 @@
         }
     }
 }
+
+.title-2 {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-top: 1.5rem;
+}
+
+.episodes {
+    width: 100%;
+    max-height: 50rem;
+    overflow-y: auto;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    padding: 1rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .episode {
+        width: 10rem;
+        height: 4rem;
+        color: var(--text-black);
+        background-color: var(--background-color-6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+
+        &.active {
+            background-color: var(--primary-color);
+        }
+    }
+}

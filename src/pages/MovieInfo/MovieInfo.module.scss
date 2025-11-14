@@ -250,11 +250,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             padding: 0.8rem 0.8rem;
             color: var(--text-black);
             background-color: var(--primary-text);
             font-weight: 600;
+            font-size: 1.6rem;
 
             &:hover {
                 cursor: pointer;
