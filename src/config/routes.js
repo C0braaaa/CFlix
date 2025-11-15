@@ -6,6 +6,7 @@ const routes = {
     cartoons: '/hoat-hinh',
     category: '/the-loai/:slug',
     nation: '/quoc-gia/:slug',
+    dubbed: '/phim-thuyet-minh',
     topics: '/chu-de',
     topicsDetail: '/chu-de/:slug',
     movieInfo: '/phim/:slug',

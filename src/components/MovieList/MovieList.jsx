@@ -12,7 +12,7 @@ import styles from './MovieList.module.scss';
 
 const cx = classNames.bind(styles);
 
-function MovieList({ title, fetchFunction, type }) {
+function MovieList({ title, fetchFunction, type, slug }) {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -33,7 +33,7 @@ function MovieList({ title, fetchFunction, type }) {
         async (pageNum) => {
             setIsLoader(true);
             try {
-                const data = await fetchFunction(pageNum, 32);
+                const data = await fetchFunction(pageNum, 32, slug);
                 setMovies(data.items || []);
                 setTotalPages(data.params?.pagination?.totalPages || data.totalPages || 1);
             } catch (error) {
@@ -165,6 +165,7 @@ function MovieList({ title, fetchFunction, type }) {
 MovieList.propTypes = {
     title: PropTypes.string.isRequired,
     fetchFunction: PropTypes.func.isRequired,
+    slug: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
 };
 

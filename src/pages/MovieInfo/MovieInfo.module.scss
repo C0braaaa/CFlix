@@ -269,67 +269,6 @@
     }
 }
 
-.l-3 {
-    margin-top: 5rem;
-}
-.text {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-
-    svg,
-    h2 {
-        font-size: 2rem;
-    }
-}
-
-.comments {
-    position: relative;
-    width: 100%;
-    border-radius: 1rem;
-    padding: 1rem;
-    background-color: var(--background-color-6);
-
-    textarea {
-        width: 100%;
-        height: 15rem;
-        padding: 1rem;
-        background-color: var(--background-color);
-        border-radius: 1rem;
-        color: var(--text-color);
-        font-size: 1.6rem;
-        resize: none;
-        border: 1px solid transparent;
-
-        &:focus {
-            border-color: var(--primary-text);
-        }
-    }
-    .send {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 1rem;
-        font-size: 1.6rem;
-        color: var(--primary-text);
-        cursor: pointer;
-
-        svg {
-            transform: rotate(45deg);
-        }
-    }
-
-    .count {
-        position: absolute;
-        right: 1.8rem;
-        top: 1.1rem;
-        font-size: 1.4rem;
-        color: var(--text-color);
-    }
-}
-
 // media queries
 @media (max-width: 1600px) {
     .line-2 {

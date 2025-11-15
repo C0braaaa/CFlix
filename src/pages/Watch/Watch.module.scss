@@ -51,9 +51,19 @@
     }
 }
 
+.title-2 {
+    position: relative;
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    padding-right: 2rem;
+}
 .options {
     display: flex;
     align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
 
     h2 {
         position: relative;

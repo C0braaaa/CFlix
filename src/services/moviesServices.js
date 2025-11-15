@@ -1,37 +1,13 @@
 import * as request from '../utils/httpRequest';
 
-export const singleMovie = async (page = 1, limit = 32) => {
+export const typeList = async (page = 1, limit = 32, slug) => {
     try {
-        const res = await request.get('v1/api/danh-sach/phim-le', {
+        const res = await request.get(`v1/api/danh-sach/${slug}`, {
             params: { page, limit },
         });
         return res?.data || {};
     } catch (error) {
         console.error('Chet me APi no loi cho nao roi:', error);
-        return {};
-    }
-};
-
-export const seriesMovie = async (page = 1, limit = 32) => {
-    try {
-        const res = await request.get('v1/api/danh-sach/phim-bo', {
-            params: { page, limit },
-        });
-        return res?.data || {};
-    } catch (error) {
-        console.error('Chet me API no loi cho nao roi:', error);
-        return {};
-    }
-};
-
-export const cartoons = async (page = 1, limit = 32) => {
-    try {
-        const res = await request.get('v1/api/danh-sach/hoat-hinh', {
-            params: { page, limit },
-        });
-        return res?.data || {};
-    } catch (error) {
-        console.error('Chet me API no loi cho nao roi:', error);
         return {};
     }
 };

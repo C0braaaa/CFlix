@@ -8,6 +8,7 @@ import SeriesMovie from '../pages/SeriesMovie/SeriesMovie';
 import Cartoons from '../pages/Cartoons/Cartoons';
 import Genres from '../pages/Genres/Genres';
 import Nations from '../pages/Nations/Nations';
+import DubbedMovie from '../pages/DubbedMovie/DubbedMovie';
 import UserPage from '../pages/UserPage/UserPage';
 import FullTopics from '../pages/Topics/FullTopics';
 import TopicsDetail from '../pages/Topics/TopicsDetail';
@@ -23,6 +24,7 @@ const publicRoutes = [
     { path: config.routes.cartoons, component: Cartoons },
     { path: config.routes.category, component: Genres },
     { path: config.routes.nation, component: Nations },
+    { path: config.routes.dubbed, component: DubbedMovie },
     { path: config.routes.topics, component: FullTopics },
     { path: config.routes.topicsDetail, component: TopicsDetail },
     { path: config.routes.user, component: UserPage },
