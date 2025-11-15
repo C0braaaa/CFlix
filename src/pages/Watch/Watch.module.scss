@@ -51,10 +51,58 @@
     }
 }
 
-.title-2 {
-    color: var(--text-color);
-    font-size: 2rem;
-    margin-top: 1.5rem;
+.options {
+    display: flex;
+    align-items: center;
+
+    h2 {
+        position: relative;
+        color: var(--text-color);
+        font-size: 2rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        padding-right: 2rem;
+
+        &::after {
+            content: '';
+            height: 80%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            width: 1px;
+            height: 70%;
+            background-color: var(--border-color);
+        }
+    }
+
+    .option {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 1rem 2rem 1rem 1rem;
+        margin-left: 2rem;
+        background-color: var(--background-color-6);
+        border-radius: 0.5rem;
+        cursor: pointer;
+        opacity: 0.8;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.active {
+            background-color: var(--primary-color);
+            color: var(--text-black);
+            opacity: 1;
+            font-weight: 600;
+        }
+    }
 }
 
 .episodes {

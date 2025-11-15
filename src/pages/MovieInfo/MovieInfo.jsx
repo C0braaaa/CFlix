@@ -83,10 +83,28 @@ function MovieInfo() {
                         Quốc gia: <span>{movie?.country?.[0]?.name}</span>
                     </p>
                     <p className={cx('actor')}>
-                        Diễn viên: <span>{movie?.actor?.join(', ')}</span>
+                        Diễn viên:{' '}
+                        {movie?.actor?.map((actor, index) => (
+                            <a
+                                href={`https://www.google.com/search?q=${actor}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                key={index}
+                            >
+                                {actor}
+                                {index < movie.actor.length - 1 && ', '}
+                            </a>
+                        ))}
                     </p>
                     <p className={cx('director')}>
-                        Đạo diễn: <span>{movie?.director?.join(', ')}</span>
+                        Đạo diễn:{' '}
+                        <a
+                            href={`https://www.google.com/search?q=${movie?.director?.join(', ')}`}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            {movie?.director?.join(', ')}
+                        </a>
                     </p>
                 </div>
                 <div className={cx('right-side')}>

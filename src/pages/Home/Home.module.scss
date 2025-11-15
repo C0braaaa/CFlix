@@ -170,13 +170,14 @@
     margin-top: 3rem;
 
     .play {
+        position: relative;
         width: 7rem;
         height: 7rem;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        background: linear-gradient(39deg, rgba(254, 207, 89, 1), rgba(255, 241, 204, 1));
+        background: linear-gradient(39deg, #00ffff, #66ffff);
 
         opacity: 0.9;
 
@@ -185,10 +186,12 @@
             box-shadow: 0 5px 10px 5px rgba(255, 218, 125, 0.1);
         }
         .play-icon {
+            position: absolute;
             color: #191b24;
             font-size: 3rem;
-            transform: translateX(4px);
-            transform: translateY(3px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     }
 }

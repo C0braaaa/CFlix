@@ -47,7 +47,12 @@ function Dropdown({
                                     <hr />
                                     <div className={cx('user-menu-2')}>
                                         {data.map((value, index) => (
-                                            <Link to={value.to} className={cx('user-menu-item')} key={index}>
+                                            <Link
+                                                to={value.to}
+                                                className={cx('user-menu-item')}
+                                                key={index}
+                                                onClick={handleHide}
+                                            >
                                                 <FontAwesomeIcon icon={value.icon} />
                                                 <span>{value.name}</span>
                                             </Link>
