@@ -126,11 +126,9 @@ function Home() {
                                         </div>
                                         <p className={cx('movie-description')}>{item.description}</p>
                                         <div className={cx('movie-actions')}>
-                                            <div className={cx('play')}>
-                                                <Link to={item.to}>
-                                                    <FontAwesomeIcon className={cx('play-icon')} icon={faPlay} />
-                                                </Link>
-                                            </div>
+                                            <Link to={item.to} className={cx('play')}>
+                                                <FontAwesomeIcon className={cx('play-icon')} icon={faPlay} />
+                                            </Link>
                                             {user && (
                                                 <div className={cx('group-actions')}>
                                                     <Tippy content="Yêu thích" offset={[0, -5]} placement="bottom">

@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 
 import styles from './DefaultLayout.module.scss';
 import Header from '../components/Header/Header';
+import MobileHeader from '../components/MobileHeader/MobileHeader';
 import Footer from '../components/Footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,16 @@ const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
     const [moveTop, setMoveTop] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -34,7 +45,7 @@ function DefaultLayout({ children }) {
 
     return (
         <div className={cx('wrapper')}>
-            <Header />
+            {isMobile ? <MobileHeader /> : <Header />}
             <div className={cx('container')}>{children}</div>
             <Footer />
             {moveTop && (

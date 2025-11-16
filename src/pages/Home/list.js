@@ -22,7 +22,7 @@ export const slidesInfo = [
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/f9f0dbe638fb6996e114f12f2ee63aa6.jpg',
         infoPage: '/phim/nguoi-nhen-khong-con-nha',
-        to: '/xem-phim/nguoi-nhen-khong-con-nha',
+        to: '/xem-phim/nguoi-nhen-khong-con-nha/full',
     },
     {
         title: 'Trăm Dặm Tử Thần',
@@ -42,7 +42,7 @@ export const slidesInfo = [
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c21745efee816a40729ad2f2fedb69f0.webp',
         infoPage: '/phim/tram-dam-tu-than',
-        to: '/xem-phim/tram-dam-tu-than',
+        to: '/xem-phim/tram-dam-tu-than/full',
     },
     {
         title: 'Hành Trình Rực Rỡ Ta Đã Yêu',
@@ -64,7 +64,7 @@ export const slidesInfo = [
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/c6035e3d8cc0d2388997a8f45f23686b.webp',
         infoPage: '/phim/hanh-trinh-ruc-ru-ta-da-yeu',
-        to: '/xem-phim/hanh-trinh-ruc-ru-ta-da-yeu',
+        to: '/xem-phim/hanh-trinh-ruc-ru-ta-da-yeu/full',
     },
     {
         title: 'Trò Chơi Ảo Giác: Ares',
@@ -83,7 +83,7 @@ export const slidesInfo = [
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/cedd848ff99c21d69a84f1c610872b4f.webp',
         infoPage: '/phim/tro-choi-ao-giac-ares',
-        to: '/xem-phim/tro-choi-ao-giac-ares',
+        to: '/xem-phim/tro-choi-ao-giac-ares/full',
     },
     {
         title: 'Hoa Hồng Có Gai',
@@ -103,6 +103,6 @@ export const slidesInfo = [
         `,
         imgUrl: 'https://static.nutscdn.com/vimg/1920-0/d337eec84180302155cff0bdb951e62f.webp',
         infoPage: '/phim/hoa-hong-co-gai',
-        to: '/xem-phim/hoa-hong-co-gai',
+        to: '/xem-phim/hoa-hong-co-gai/full',
     },
 ];

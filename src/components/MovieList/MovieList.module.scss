@@ -108,6 +108,12 @@
     }
 }
 
+.expanded {
+    width: 40rem;
+    height: 36rem;
+    background-color: red;
+}
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -224,6 +230,7 @@
 // responsive for mobile
 @media (max-width: 768px) {
     .wrapper {
+        margin-top: 3rem;
         padding: 0 1rem;
     }
 
@@ -235,6 +242,6 @@
     }
 
     .item {
-        width: 20rem;
+        width: 17.5rem;
     }
 }

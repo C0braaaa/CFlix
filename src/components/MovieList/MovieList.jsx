@@ -42,7 +42,7 @@ function MovieList({ title, fetchFunction, type, slug }) {
                 setIsLoader(false);
             }
         },
-        [fetchFunction],
+        [fetchFunction, slug],
     );
 
     useEffect(() => {

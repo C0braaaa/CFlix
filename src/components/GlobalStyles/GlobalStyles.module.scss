@@ -16,6 +16,7 @@
     --background-color-4: #ffffff05;
     --background-color-5: #1e2545;
     --background-color-6: #5e6070;
+    --background-color-7: #003366;
 
     --border-color: #fff4;
     --font-family: 'Inter', sans-serif;
@@ -69,6 +70,10 @@ body {
 a {
     text-decoration: none !important;
     color: #fff;
+}
+
+ul {
+    list-style: none;
 }
 
 button,
