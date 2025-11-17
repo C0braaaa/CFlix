@@ -88,7 +88,12 @@ h3 {
 
     .topics-list {
         flex-wrap: nowrap;
-        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     .topic-item {
         width: 12rem;

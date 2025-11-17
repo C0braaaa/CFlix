@@ -2,14 +2,34 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faInfinity, faPaperPlane, faReply, faTrash } from '@fortawesome/free-solid-svg-icons';
 import styles from './Comments.module.scss';
 
 const cx = classNames.bind(styles);
 function Comment() {
     const [input, setInput] = useState('');
+    const [comments, setComments] = useState([]);
+    const [reply, setReply] = useState(false);
+
+    const handleSend = () => {
+        if (!input.trim()) return;
+
+        const newComment = {
+            id: Date.now(),
+            text: input.trim(),
+            time: new Date().toISOString(),
+        };
+
+        setComments([newComment, ...comments]);
+        setInput('');
+    };
+
+    const handleDelete = (id) => {
+        setComments(comments.filter((comment) => comment.id !== id));
+    };
+
     return (
-        <div className={cx('l-3')}>
+        <div className={cx('wrapper')}>
             <div className={cx('text')}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
                     <g clipPath="url(#clip0_281_3026)">
@@ -20,7 +40,7 @@ function Comment() {
                     </g>
                 </svg>
                 <h2>
-                    Bình luận <span>(0)</span>
+                    Bình luận <span>{`(${comments.length})` || `(${0})`}</span>
                 </h2>
             </div>
             <div className={cx('comments')}>
@@ -32,16 +52,51 @@ function Comment() {
                     placeholder="Viết bình luận"
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
+                        if (e.key === 'Enter' && !e.shiftKey) {
                             e.preventDefault();
+                            handleSend();
                         }
                     }}
                 ></textarea>
-                <div className={cx('send')}>
-                    <FontAwesomeIcon icon={faPaperPlane} />
+                <div className={cx('send')} onClick={handleSend}>
                     <span>Gửi</span>
+                    <FontAwesomeIcon icon={faPaperPlane} />
                 </div>
                 <span className={cx('count')}>{input.length}/1000</span>
+            </div>
+            <div className={cx('list')}>
+                {comments.map((c) => (
+                    <div key={c.id} className={cx('item')}>
+                        <div className={cx('left-side')}>
+                            <img
+                                src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aphelios_20.jpg"
+                                alt="avatar"
+                            />
+                        </div>
+                        <div className={cx('right-side')}>
+                            <div className={cx('l-1')}>
+                                <span>Aphelios</span>
+                                <span>
+                                    <FontAwesomeIcon icon={faInfinity} />
+                                </span>
+                                <span>{c.time.slice(0, 10)}</span>
+                            </div>
+                            <div className={cx('l-2')}>
+                                <p>{c.text}</p>
+                            </div>
+                            <div className={cx('l-3')}>
+                                <div className={cx('answer')} onClick={() => setReply((prev) => !prev)}>
+                                    <FontAwesomeIcon icon={faReply} />
+                                    <span>Trả lời</span>
+                                </div>
+                                <div className={cx('delete')} onClick={() => handleDelete(c.id)}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                    <span>Xoá</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
