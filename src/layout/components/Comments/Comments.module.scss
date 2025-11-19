@@ -107,6 +107,18 @@
 
         span {
             &:nth-of-type(2) {
+                height: 2rem;
+                display: flex;
+                align-items: flex-end;
+                font-size: 1rem;
+                color: var(--primary-color);
+                padding: 0 0.5rem;
+                transform: translateY(-3px);
+                border-radius: 0.5rem;
+                border: 1px solid var(--primary-color);
+            }
+
+            &:nth-of-type(3) {
                 color: var(--primary-color);
             }
         }

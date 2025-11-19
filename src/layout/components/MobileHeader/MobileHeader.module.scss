@@ -35,6 +35,7 @@
 
 .search {
     margin-right: 1rem;
+    flex-shrink: 0;
     .icon {
         color: var(--text-color);
         cursor: pointer;

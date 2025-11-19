@@ -14,6 +14,7 @@ function Dropdown({
     type = null,
     showDropdown,
     setShowDropdown,
+    closeMenu,
     userInfo,
     columns = 1,
     width = '20rem',
@@ -108,7 +109,15 @@ function Dropdown({
                                 {...attrs}
                             >
                                 {data.map((item, i) => (
-                                    <Link key={i} to={item.to} className={cx('dropdown-item')} onClick={handleHide}>
+                                    <Link
+                                        key={i}
+                                        to={item.to}
+                                        className={cx('dropdown-item')}
+                                        onClick={() => {
+                                            handleHide();
+                                            closeMenu && closeMenu();
+                                        }}
+                                    >
                                         <span>{item.name}</span>
                                     </Link>
                                 ))}

@@ -129,3 +129,12 @@
         background-size: 20% 100%, 20% 100%, 20% 100%;
     }
 }
+
+// media query
+@media (max-width: 768px) {
+    .search {
+        margin-left: 1rem;
+        width: 33rem;
+        height: 45px;
+    }
+}

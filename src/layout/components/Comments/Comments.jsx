@@ -9,7 +9,9 @@ const cx = classNames.bind(styles);
 function Comment() {
     const [input, setInput] = useState('');
     const [comments, setComments] = useState([]);
-    const [reply, setReply] = useState(false);
+    // const [reply, setReply] = useState(false);
+
+    let isAdmin = true;
 
     const handleSend = () => {
         if (!input.trim()) return;
@@ -76,6 +78,7 @@ function Comment() {
                         <div className={cx('right-side')}>
                             <div className={cx('l-1')}>
                                 <span>Aphelios</span>
+                                {isAdmin && <span>ADMIN</span>}
                                 <span>
                                     <FontAwesomeIcon icon={faInfinity} />
                                 </span>
@@ -85,7 +88,7 @@ function Comment() {
                                 <p>{c.text}</p>
                             </div>
                             <div className={cx('l-3')}>
-                                <div className={cx('answer')} onClick={() => setReply((prev) => !prev)}>
+                                <div className={cx('answer')}>
                                     <FontAwesomeIcon icon={faReply} />
                                     <span>Trả lời</span>
                                 </div>
