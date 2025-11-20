@@ -10,6 +10,9 @@ const cx = classNames.bind(styles);
 function Profile() {
     const { openModal } = useAuth();
     const [gender, setGender] = useState('other');
+    const [avatar, setAvatar] = useState(
+        '//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp',
+    );
 
     const handleGenderChange = (e) => {
         setGender(e.target.value);
@@ -91,14 +94,17 @@ function Profile() {
                     </div>
                     <div className={cx('col-2')}>
                         <div className={cx('avatar')}>
-                            <img
-                                src="//assets.manutd.com/AssetPicker/images/0/0/22/86/1464036/8_Bruno_Fernandes1751376440402.webp"
-                                alt="logo"
-                            />
+                            <img src={avatar} alt="logo" />
                         </div>
                         <div className={cx('change-avatar')}>
                             <label htmlFor="fileUpload">Đổi avatar</label>
-                            <input type="file" id="fileUpload" style={{ display: 'none' }} />
+                            <input
+                                type="file"
+                                id="fileUpload"
+                                accept="image/*"
+                                style={{ display: 'none' }}
+                                onChange={(e) => setAvatar(URL.createObjectURL(e.target.files[0]))}
+                            />
                         </div>
                     </div>
                 </div>

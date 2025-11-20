@@ -26,6 +26,9 @@
     font-size: 2.3rem;
     margin-bottom: 1rem;
 }
+.video {
+    height: 100rem;
+}
 
 .actions {
     display: flex;
@@ -141,6 +144,56 @@
 
         &.active {
             background-color: var(--primary-color);
+        }
+    }
+}
+
+// mobile responsive
+@media screen and (max-width: 500px) {
+    .wrapper {
+        margin-top: 2rem;
+        padding: 0 0.5rem;
+    }
+    .l-1 {
+        .title {
+            font-size: 1.5rem;
+        }
+    }
+    .video {
+        height: 23.5rem;
+
+        .action {
+            font-size: 1.6rem;
+
+            span {
+                display: none;
+            }
+        }
+    }
+    .options {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 5rem;
+
+        h2 {
+            font-size: 1.6rem;
+
+            &::after {
+                width: 0;
+            }
+        }
+
+        .option {
+            margin-left: 0;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+    }
+    .episodes {
+        grid-template-columns: repeat(5, 1fr);
+
+        .episode {
+            width: 6rem;
         }
     }
 }

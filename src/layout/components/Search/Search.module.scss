@@ -131,10 +131,23 @@
 }
 
 // media query
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .search {
         margin-left: 1rem;
-        width: 33rem;
-        height: 45px;
+        width: calc(100vw - 15vw);
+    }
+
+    .search-input {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .search-icon {
+        left: 1rem;
+    }
+
+    .search-result {
+        width: calc(100vw - 5rem);
+        margin-left: 1rem;
     }
 }

@@ -109,3 +109,36 @@ label {
         object-fit: fill;
     }
 }
+
+// mobile responsive
+@media (max-width: 500px) {
+    .heading {
+        margin-bottom: 15rem;
+    }
+    .input__text {
+        width: 100%;
+    }
+    .col-2 {
+        position: absolute;
+        top: -12rem;
+        left: 0;
+        flex-direction: row;
+        gap: 2rem;
+
+        .avatar {
+            transform: none;
+            width: 7.5rem;
+            height: 7.5rem;
+        }
+
+        .change-avatar {
+            transform: translateY(-0.5rem);
+
+            label {
+                &:hover {
+                    color: var(--text-color);
+                }
+            }
+        }
+    }
+}

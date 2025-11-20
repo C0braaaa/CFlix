@@ -37,7 +37,7 @@ function Wacth() {
     const currentEpisode =
         episodes?.[server]?.server_data?.find((ep) => ep.slug === episode) || episodes?.[server]?.server_data?.[0];
 
-    console.log(currentEpisode);
+    // console.log(currentEpisode);
 
     function getTextInBrackets(str) {
         const match = str.match(/\(([^)]+)\)/);
@@ -59,7 +59,7 @@ function Wacth() {
                     key={movie._id}
                     src={currentEpisode?.link_embed}
                     width="100%"
-                    height="1000"
+                    height="100%"
                     allowFullScreen
                     loading="lazy"
                     frameBorder="0"

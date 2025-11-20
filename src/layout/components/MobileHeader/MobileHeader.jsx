@@ -2,7 +2,18 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './MobileHeader.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faMagnifyingGlass, faUser, faUserPlus, faX } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBars,
+    faClockRotateLeft,
+    faHeart,
+    faInfinity,
+    faMagnifyingGlass,
+    faPlus,
+    faRightFromBracket,
+    faUser,
+    faUserPlus,
+    faX,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/index-button';
@@ -12,6 +23,8 @@ import Search from '../Search/Search';
 const cx = classNames.bind(styles);
 
 function MobileHeader() {
+    const currentUser = true;
+
     const [menuIcon, setMenuIcon] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showSearch, setShowSearch] = useState(true);
@@ -44,22 +57,88 @@ function MobileHeader() {
                         <div className={cx('menu__list')}>
                             {showMenu && (
                                 <div className={cx('container')}>
-                                    <div className={cx('btn')}>
-                                        <Button
-                                            primary
-                                            leftIcon={<FontAwesomeIcon icon={faUser} />}
-                                            className={cx('btn__login')}
-                                        >
-                                            Thành viên
-                                        </Button>
-                                        <Button
-                                            primary
-                                            leftIcon={<FontAwesomeIcon icon={faUserPlus} />}
-                                            className={cx('btn__register')}
-                                        >
-                                            Đăng kí
-                                        </Button>
-                                    </div>
+                                    {currentUser && (
+                                        <div className={cx('user')}>
+                                            <div className={cx('user__l-1')}>
+                                                <span>C0bra</span>
+                                                <FontAwesomeIcon icon={faInfinity} className={cx('icon__gender')} />
+                                                <div className={cx('user__avatar')}>
+                                                    <img
+                                                        src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/09/hinh-nen-ronaldo-11.jpg"
+                                                        alt="avatar"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className={cx('user__l-2')}>
+                                                <Link
+                                                    to="/user/favorite"
+                                                    className={cx('user__item')}
+                                                    onClick={() => {
+                                                        setShowMenu((prev) => !prev);
+                                                        setMenuIcon((prev) => !prev);
+                                                    }}
+                                                >
+                                                    <FontAwesomeIcon icon={faHeart} />
+                                                    <span>Yêu Thích</span>
+                                                </Link>
+                                                <Link
+                                                    to="/user/playlist"
+                                                    className={cx('user__item')}
+                                                    onClick={() => {
+                                                        setShowMenu((prev) => !prev);
+                                                        setMenuIcon((prev) => !prev);
+                                                    }}
+                                                >
+                                                    <FontAwesomeIcon icon={faPlus} />
+                                                    <span>Danh Sách</span>
+                                                </Link>
+                                                <Link
+                                                    to="/user/xem-tiep"
+                                                    className={cx('user__item')}
+                                                    onClick={() => {
+                                                        setShowMenu((prev) => !prev);
+                                                        setMenuIcon((prev) => !prev);
+                                                    }}
+                                                >
+                                                    <FontAwesomeIcon icon={faClockRotateLeft} />
+                                                    <span>Xem Tiếp</span>
+                                                </Link>
+                                                <Link
+                                                    to="/user/profile"
+                                                    className={cx('user__item')}
+                                                    onClick={() => {
+                                                        setShowMenu((prev) => !prev);
+                                                        setMenuIcon((prev) => !prev);
+                                                    }}
+                                                >
+                                                    <FontAwesomeIcon icon={faUser} />
+                                                    <span>Tài Khoản</span>
+                                                </Link>
+                                                <div className={cx('user__item')}>
+                                                    <FontAwesomeIcon icon={faRightFromBracket} />
+                                                    <span>Thoát</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {!currentUser && (
+                                        <div className={cx('btn')}>
+                                            <Button
+                                                primary
+                                                leftIcon={<FontAwesomeIcon icon={faUser} />}
+                                                className={cx('btn__login')}
+                                            >
+                                                Thành viên
+                                            </Button>
+                                            <Button
+                                                primary
+                                                leftIcon={<FontAwesomeIcon icon={faUserPlus} />}
+                                                className={cx('btn__register')}
+                                            >
+                                                Đăng kí
+                                            </Button>
+                                        </div>
+                                    )}
                                     <div className={cx('nav')}>
                                         <ul className={cx('list')}>
                                             <li className={cx('item')}>

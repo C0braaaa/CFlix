@@ -95,7 +95,7 @@ function MovieInfo() {
                 Diễn viên:{' '}
                 {movie?.actor?.map((actor, index) => (
                     <a href={`https://www.google.com/search?q=${actor}`} target="_blank" rel="noreferrer" key={index}>
-                        {actor}
+                        {decodeHTML(actor)}
                         {index < movie.actor.length - 1 && ', '}
                     </a>
                 ))}
