@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 import { faBell, faDoorOpen, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import config from '../../../config/index-config.js';
-import { genres, nations, more, user } from './listDropdown.js';
+import { genres, nations, more, user } from '../../../components/Dropdown/listDropdown.js';
 import Dropdown from '../../../components/Dropdown/Dropdown.jsx';
 import Search from '../Search/Search.jsx';
 import { useAuth } from '../../../features/auth/context/AuthContext.jsx';

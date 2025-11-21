@@ -10,10 +10,14 @@ import Genres from '../pages/Genres/Genres';
 import Nations from '../pages/Nations/Nations';
 import DubbedMovie from '../pages/DubbedMovie/DubbedMovie';
 import UserPage from '../pages/UserPage/UserPage';
+import DashBoard from '../pages/Admin/Admin';
 import FullTopics from '../pages/Topics/FullTopics';
 import TopicsDetail from '../pages/Topics/TopicsDetail';
 import MovieInfo from '../pages/MovieInfo/MovieInfo';
 import Wacth from '../pages/Watch/Watch';
+
+//erorr page
+import NotFound404 from '../pages/ErorrPage/NotFound404';
 
 // public routes
 const publicRoutes = [
@@ -28,8 +32,11 @@ const publicRoutes = [
     { path: config.routes.topics, component: FullTopics },
     { path: config.routes.topicsDetail, component: TopicsDetail },
     { path: config.routes.user, component: UserPage },
+    { path: config.routes.admin, component: DashBoard, layout: null },
     { path: config.routes.movieInfo, component: MovieInfo },
     { path: config.routes.watch, component: Wacth },
+    // erorr page
+    { path: '*', component: NotFound404 },
 ];
 
 // private routes

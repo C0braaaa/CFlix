@@ -21,6 +21,7 @@ function Dropdown({
     height = 'auto',
 }) {
     const isVisible = showDropdown === name;
+    const isAdmin = true;
 
     const handleToggle = () => {
         setShowDropdown(isVisible ? null : name);
@@ -47,17 +48,24 @@ function Dropdown({
                                     <span className={cx('username')}>{userInfo?.name}</span>
                                     <hr />
                                     <div className={cx('user-menu-2')}>
-                                        {data.map((value, index) => (
-                                            <Link
-                                                to={value.to}
-                                                className={cx('user-menu-item')}
-                                                key={index}
-                                                onClick={handleHide}
-                                            >
-                                                <FontAwesomeIcon icon={value.icon} />
-                                                <span>{value.name}</span>
-                                            </Link>
-                                        ))}
+                                        {data
+                                            .filter((value) => {
+                                                if (value.to === '/dashboard' && !isAdmin) {
+                                                    return false;
+                                                }
+                                                return true;
+                                            })
+                                            .map((value, index) => (
+                                                <Link
+                                                    to={value.to}
+                                                    className={cx('user-menu-item')}
+                                                    key={index}
+                                                    onClick={handleHide}
+                                                >
+                                                    <FontAwesomeIcon icon={value.icon} />
+                                                    <span>{value.name}</span>
+                                                </Link>
+                                            ))}
                                     </div>
                                     <hr />
                                     <div className={cx('user-logout')}>

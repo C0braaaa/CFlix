@@ -12,6 +12,7 @@ const routes = {
     movieInfo: '/phim/:slug',
     watch: '/xem-phim/:slug/:episode',
     user: '/user/:slug',
+    admin: '/dashboard',
 };
 
 export default routes;

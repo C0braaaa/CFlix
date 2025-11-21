@@ -18,7 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/index-button';
 import Dropdown from '../../../components/Dropdown/Dropdown';
-import { genres, nations, more } from '../Header/listDropdown';
+import { genres, nations, more } from '../../../components/Dropdown/listDropdown';
 import Search from '../Search/Search';
 const cx = classNames.bind(styles);
 
