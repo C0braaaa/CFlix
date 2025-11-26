@@ -410,6 +410,9 @@
                 height: 2.6rem;
                 border-radius: 50%;
             }
+            .swiper-pagination-bullet-active {
+                border-color: var(--primary-color);
+            }
         }
     }
 }

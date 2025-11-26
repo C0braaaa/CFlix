@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight, faFilter } from '@fortawesome/free-solid-svg-icons';
 
 import PropTypes from 'prop-types';
 
@@ -95,6 +95,12 @@ function MovieList({ title, fetchFunction, type, slug }) {
     return (
         <div className={cx('wrapper')}>
             <h2 className={cx('title')}>{title}</h2>
+            <div className={cx('filter')}>
+                <div className={cx('filter-icon')}>
+                    <FontAwesomeIcon icon={faFilter} />
+                    <span>Bộ lọc</span>
+                </div>
+            </div>
             <div className={cx('content')}>
                 {isLoader ? (
                     <div className={cx('loader')}></div>

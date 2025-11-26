@@ -14,12 +14,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-creative';
 import { faHeart, faPlay, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { slidesInfo } from './list';
-import { Topics } from './component/index';
+import { LatestSingleMovie, Topics } from './component/index';
 
 const cx = classNames.bind(styles);
 
 function Home() {
-    const user = false;
+    const user = true;
 
     useEffect(() => {
         document.title = 'CFlix - Phim Hay Xem Là Ngất Ngay';
@@ -152,6 +152,7 @@ function Home() {
                 })}
             </Swiper>
             <Topics />
+            <LatestSingleMovie />
         </div>
     );
 }

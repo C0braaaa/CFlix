@@ -81,7 +81,11 @@ h3 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
+    .wrapper {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
     h3 {
         font-size: 2rem;
     }

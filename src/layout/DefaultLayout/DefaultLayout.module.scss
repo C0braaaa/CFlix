@@ -32,3 +32,9 @@
         transform: translateY(0);
     }
 }
+
+@media (max-width: 500px) {
+    .move-top {
+        right: 2rem;
+    }
+}

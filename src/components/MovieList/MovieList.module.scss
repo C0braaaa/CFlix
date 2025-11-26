@@ -5,7 +5,22 @@
 
 .title {
     color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 2rem;
+
+    .filter-icon {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.6rem;
+        color: var(--text-color);
+    }
 }
 
 .content {
