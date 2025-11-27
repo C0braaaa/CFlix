@@ -13,13 +13,69 @@
     flex-direction: column;
     margin-bottom: 2rem;
 
-    .filter-icon {
+    .filter__icon {
         cursor: pointer;
         display: flex;
         align-items: center;
         gap: 1rem;
         font-size: 1.6rem;
         color: var(--text-color);
+        margin-bottom: 1.5rem;
+
+        &.active svg {
+            color: var(--primary-color);
+        }
+    }
+    .filter__selection {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        border: 1px solid var(--border-color);
+
+        .country,
+        .category,
+        .version,
+        .years,
+        .sort {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .country__label,
+        .category__label,
+        .version__label,
+        .years__label,
+        .sort__label {
+            font-size: 1.6rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--text-color);
+        }
+
+        .country__list,
+        .category__list,
+        .version__list,
+        .years__list,
+        .sort__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            span {
+                color: var(--text-color-1);
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0 0.5rem;
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
     }
 }
 
@@ -121,12 +177,6 @@
         font-size: 1.3rem;
         color: var(--text-color-1);
     }
-}
-
-.expanded {
-    width: 40rem;
-    height: 36rem;
-    background-color: red;
 }
 
 .pagination {

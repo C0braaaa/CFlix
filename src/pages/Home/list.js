@@ -1,28 +1,20 @@
 export const slidesInfo = [
     {
-        title: 'Người Nhện: Không Còn Nhà',
-        engTitle: 'Spider-Man: No Way Home',
-        imdb: '8.2',
-        quality: '4K',
-        tagModel: 'T13',
-        actor: ['Tom Holland', 'Zendaya', 'Benedict Cumberbatch', 'Michael Keaton'],
-        director: 'Jon Watts',
-        releaseInfo: ['2021', '2h 28m'],
-        types: ['Chiếu Rạp', 'Gay Cấn', 'Siêu Anh Hùng', 'Marvel', 'Chuyển Thể', 'Phiêu Lưu'],
+        title: 'Cậu Bé Mất Tích (Phần 5)',
+        engTitle: 'Stranger Things',
+        imdb: '8.6',
+        quality: 'FHD',
+        tagModel: 'T16',
+        actor: [],
+        director: 'Ross Duffer',
+        releaseInfo: ['2025', '1h/ tập'],
+        types: ['Chính Kịch', 'Hành Động', 'Bí Ẩn', 'Kì Ảo', 'Giả Tưởng'],
         description: `
-            Danh tính Người Nhện bị Mysterio tiết lộ, khiến cuộc sống của Peter Parker gặp 
-            nhiều khó khăn. Anh phải đối mặt với sự soi mói của dư luận, sự nghi ngờ của bạn
-             bè và gia đình, và cả những nguy hiểm rình rập từ những kẻ thù cũ. Trong lúc bế 
-             tắc, Peter tìm đến Doctor Strange, hy vọng phép thuật sẽ giúp anh che giấu danh 
-             tính và khôi phục lại cuộc sống bình thường. Tuy nhiên, mọi chuyện không hề 
-             suôn sẻ như dự tính. Phép thuật của Doctor Strange vô tình mở ra cánh cổng đa 
-             vũ trụ, dẫn đến sự xuất hiện của những kẻ thù nguy hiểm từ các vũ trụ khác, 
-             bao gồm Green Goblin (Willem Dafoe), Doc Ock (Alfred Molina), Electro 
-             (Jamie Foxx), Sandman (Thomas Haden Church) và Lizard (Rhys Ifans).
+            Khi một cậu bé mất tích, một thị trấn nhỏ khám phá ra một bí ẩn liên quan đến các thử nghiệm tối mật, sức mạnh siêu nhiên đáng sợ và một cô bé lạ lùng.
         `,
-        imgUrl: 'https://static.nutscdn.com/vimg/1920-0/f9f0dbe638fb6996e114f12f2ee63aa6.jpg',
-        infoPage: '/phim/nguoi-nhen-khong-con-nha',
-        to: '/xem-phim/nguoi-nhen-khong-con-nha/full',
+        imgUrl: 'https://static.nutscdn.com/vimg/1920-0/b66a8603e8c837806733063c03edf632.jpg',
+        infoPage: '/phim/cau-be-mat-tich-phan-5',
+        to: '/xem-phim/cau-be-mat-tich-phan-5/tap-01',
     },
     {
         title: 'Trăm Dặm Tử Thần',

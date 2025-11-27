@@ -23,6 +23,7 @@
 }
 
 *::selection {
+    font-weight: 600;
     background-color: var(--primary-color);
     color: var(--text-black);
 }

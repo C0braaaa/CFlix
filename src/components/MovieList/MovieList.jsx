@@ -5,9 +5,9 @@ import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faFilter } from '@fortawesome/free-solid-svg-icons';
-
 import PropTypes from 'prop-types';
 
+import { nations, genres } from '../Dropdown/listDropdown';
 import styles from './MovieList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -18,6 +18,9 @@ function MovieList({ title, fetchFunction, type, slug }) {
     const [totalPages, setTotalPages] = useState(1);
     const [inputPage, setInputPage] = useState(page);
     const [isLoader, setIsLoader] = useState(false);
+    const [showFilter, setShowFilter] = useState(false);
+
+    const year = new Date().getFullYear();
 
     useEffect(() => {
         document.title = title;
@@ -96,10 +99,60 @@ function MovieList({ title, fetchFunction, type, slug }) {
         <div className={cx('wrapper')}>
             <h2 className={cx('title')}>{title}</h2>
             <div className={cx('filter')}>
-                <div className={cx('filter-icon')}>
+                <div
+                    className={cx('filter__icon', { active: showFilter })}
+                    onClick={() => setShowFilter((prev) => !prev)}
+                >
                     <FontAwesomeIcon icon={faFilter} />
                     <span>Bộ lọc</span>
                 </div>
+                {showFilter && (
+                    <div className={cx('filter__selection')}>
+                        <div className={cx('country')}>
+                            <p className={cx('country__label')}>Quốc Gia: </p>
+                            <div className={cx('country__list')}>
+                                <span>Tất cả</span>
+                                {nations.map((nation, index) => (
+                                    <span key={index}>{nation.name}</span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className={cx('category')}>
+                            <p className={cx('category__label')}>Thể loại: </p>
+                            <div className={cx('category__list')}>
+                                <span>Tất cả</span>
+                                {genres.map((nation, index) => (
+                                    <span key={index}>{nation.name}</span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className={cx('version')}>
+                            <p className={cx('version__label')}>Phiên bản: </p>
+                            <div className={cx('version__list')}>
+                                <span>Tất cả</span>
+                                <span>Vietsub</span>
+                                <span>Thuyết Minh</span>
+                            </div>
+                        </div>
+                        <div className={cx('years')}>
+                            <p className={cx('years__label')}>Năm sản xuất: </p>
+                            <div className={cx('years__list')}>
+                                <span>Tất cả</span>
+                                {[...Array(16)].map((_, index) => {
+                                    const y = year - index;
+                                    return <span key={y}>{y}</span>;
+                                })}
+                            </div>
+                        </div>
+                        <div className={cx('sort')}>
+                            <p className={cx('sort__label')}>Sắp xếp: </p>
+                            <div className={cx('sort__list')}>
+                                <span>Mới cập nhật</span>
+                                <span>Năm sản xuất</span>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
             <div className={cx('content')}>
                 {isLoader ? (
